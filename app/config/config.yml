@@ -77,6 +77,7 @@ assetic:
         cssrewrite: ~
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
+    read_from: '%kernel.root_dir%/../htdocs'
     
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
