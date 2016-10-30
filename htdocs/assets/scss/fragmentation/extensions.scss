@@ -1,0 +1,236 @@
+//colors
+$color_gallery_approx: #f0f0f0;
+$color_fuscous_gray_approx: #505050;
+$color_bon_jour_approx: #e0e0e0;
+$color_star_dust_approx: #a0a0a0;
+$white: white;
+$color_cape_cod_approx: #404040;
+$black: black;
+$color_gray_nurse_approx: #eaeaea;
+$steel_blue:  steelblue;
+$gray: #808080;
+
+//fonts
+$font_0: Arial;
+$font_1: sans-serif;
+$font_2: Franklin Gothic Medium;
+$font_3: UnDotum;
+$font_4: Helvetica;
+
+//urls
+$url_0: url(../images/om_stack.png);
+$url_1: url(../images/om_lines.png);
+$url_2: url(../images/om_bar.png);
+$url_3: url(../images/om_scatter.png);
+$url_4: url(../images/offset_stack.png);
+$url_5: url(../images/offset_pct.png);
+$url_6: url(../images/offset_stream.png);
+$url_7: url(../images/offset_value.png);
+$url_8: url(../images/interp_cardinal.png);
+$url_9: url(../images/interp_linear.png);
+$url_10: url(../images/interp_step.png);
+
+//@extend-elements
+//original selectors
+//#interpolation_form, #offset_form
+%extend_1 {
+	vertical-align: top;
+	display: inline-block;
+	width: 45%;
+}
+
+//original selectors
+//#offset_form label, #interpolation_form label
+%extend_2 {
+	background-repeat: no-repeat;
+	background-position: 2em center;
+	cursor: pointer;
+	cursor: hand;
+}
+
+
+/*div {
+	font-family: $font_0, $font_1;
+}
+span {
+	font-family: $font_0, $font_1;
+}
+p {
+	font-family: $font_0, $font_1;
+}
+td {
+	font-family: $font_0, $font_1;
+}*/
+#content {
+	width: 1200px;
+}
+#chart {
+	display: inline-block;
+	border: 1px solid $color_gallery_approx;
+	path {
+	}
+}
+#preview {
+	margin-top: 10px;
+}
+#legend {
+	display: inline-block;
+	position: relative;
+	left: 8px;
+	background-color: $white;
+	margin-left: 0;
+	padding: 0;
+	left: 0;
+	.label {
+		color: $color_cape_cod_approx;
+	}
+	.action {
+		color: $black;
+		opacity: 0.5;
+	}
+	ul {
+		padding: 0;
+	}
+}
+#legend_container {
+	position: absolute;
+	right: 0;
+	bottom: 26px;
+	width: 0;
+}
+#chart_container {
+	position: relative;
+	display: inline-block;
+}
+#smoother {
+	margin: 0 0 10px 16px;
+	width: 100px;
+	margin: 5px 0 0 10px;
+	width: 90%;
+}
+#side_panel {
+	padding: 0 20px 20px 0;
+	width: 240px;
+	display: inline-block;
+	vertical-align: top;
+	section {
+		color: $color_fuscous_gray_approx;
+		font-size: 12px;
+		h6 {
+			margin: 0 0 1em 0;
+			font-size: 12px;
+			font-weight: normal;
+		}
+	}
+	.ui-slider-horizontal {
+		height: 1px !important;
+		border-color: $color_bon_jour_approx;
+		margin-bottom: 10px;
+	}
+	.ui-slider-handle {
+		border-color: $color_star_dust_approx;
+		height: 9px !important;
+		width: 9px !important;
+		top: -5px !important;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 6px;
+		outline: none;
+		cursor: pointer;
+	}
+}
+/*h1 {
+	font-family: $font_2, $font_3, $font_4, $font_0;
+	font-weight: normal;
+	font-size: 20px;
+}*/
+/*section {
+	border: none;
+	border-top: 1px solid $color_gray_nurse_approx;
+	padding: 15px 0;
+}*/
+#interpolation_form {
+	@extend %extend_1;
+	label {
+		display: block;
+		@extend %extend_2;
+		span {
+			padding-left: 36px;
+		}
+	}
+}
+#offset_form {
+	@extend %extend_1;
+	label {
+		display: block;
+		@extend %extend_2;
+		span {
+			padding-left: 36px;
+		}
+	}
+}
+label[for=area] {
+	background: $url_0;
+}
+label[for=line] {
+	background: $url_1;
+}
+label[for=bar] {
+	background: $url_2;
+}
+label[for=scatter] {
+	background: $url_3;
+}
+label[for=stack] {
+	background-image: $url_4;
+}
+label[for=pct] {
+	background-image: $url_5;
+}
+label[for=stream] {
+	background-image: $url_6;
+}
+label[for=value] {
+	background-image: $url_7;
+}
+label[for=cardinal] {
+	background-image: $url_8;
+}
+label[for=linear] {
+	background-image: $url_9;
+}
+label[for=step] {
+	background-image: $url_10;
+}
+.rickshaw_graph .detail {
+	left: -1000;
+}
+label.disabled {
+	opacity: 0.4;
+}
+#renderer_form.toggler {
+	display: block;
+	margin: 0;
+	input[type=radio] {
+		background: $white;
+		margin: 0 7px;
+		width: 39px;
+		height: 26px;
+		position: absolute;
+		&:checked {
+			outline: 2px solid $steel_blue;
+		}
+	}
+	label {
+		display: inline-block;
+		padding: 0;
+		width: 39px;
+		padding-top: 27px;
+		text-align: center;
+		font-size: 10px;
+		color: $gray;
+		background-repeat: no-repeat;
+		position: relative;
+		margin: 0 7px;
+		cursor: pointer;
+	}
+}

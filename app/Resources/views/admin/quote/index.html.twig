@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des quotes - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des quotes</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_quote_new') }}">Create a new quote</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Texte</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quote in quotes %}
+            <tr>
+                <td><a href="{{ path('admin_quote_show', { 'id': quote.id }) }}">{{ quote.id }}</a></td>
+                <td>{{ quote.texte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_quote_show', { 'id': quote.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_quote_edit', { 'id': quote.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

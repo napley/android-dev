@@ -1,0 +1,38 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir la version d'Android {{ android.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Voir la version d'Android "{{ android.titre }}"</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ android.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ android.titre }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ android.code }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_android_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_android_edit', { 'id': android.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

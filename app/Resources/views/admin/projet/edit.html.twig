@@ -1,0 +1,49 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Modification du projet {{ projet.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Modification du projet "{{ projet.titre }}"</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        
+        <div>
+            <fieldset>
+                <legend>Partie</legend>
+                <label class="labelClick" onclick="addPartProject();" >Ajouter</label>
+
+                <ul id="listePartProject">
+                {% for part in projet.Articles %}
+                    <li>
+                        <input type="hidden" value="{{ part.getArticle().id }}" name="partProject[id][]">
+                        <label>{{ part.getArticle().id }} - {{ part.getArticle().titre }}</label>
+                        <input type="text" value="{{ part.getRang() }}" name="partProject[index][]" class="indexPartProject"/>
+                        <label onclick="delPartProject(this);">x</label>
+                    </li>
+                {% endfor %}    
+                </ul>
+
+                <select id="partProject">
+                {% for part in partproject() %}
+                    <option value="{{ part.id }}">{{ part.id }} - {{ part.titre }}</option>
+                {% endfor %}    
+                </select>
+                <input id="indexPartProject" class="indexPartProject" type="text" maxlength="3" size="3" />
+            </fieldset>
+        </div>
+                                
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_projet_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

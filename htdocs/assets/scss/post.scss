@@ -1,0 +1,72 @@
+.postbox {
+  background: $white;
+  border: 1px solid $gray-light;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.item-thumbs {
+  position: relative;
+  overflow: hidden;
+  img {
+    display: block;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    -webkit-transition: -webkit-transform 0.4s ease;
+    transition: transform 0.4s ease-out;
+  }
+}
+
+.postbox-outer {
+  padding: 25px;
+  text-align: center;
+}
+
+.postbox .meta {
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.postbox-outer {
+  .meta > span {
+    border-bottom: 1px solid $prim-color;
+    padding: 8px 4px;
+    margin: 0 8px 0 0;
+    display: inline-block;
+  }
+  .date {
+    color: $gray-darker;
+    display: inline-block;
+  }
+}
+
+.comments-icon {
+  color: $gray-dark;
+}
+
+.postbox-title {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 300;
+  a {
+    color: $gray-darker;
+  }
+}
+
+.postbox-bottom {
+  border-top: 1px solid $gray-lighter-2;
+  padding: 0 25px;
+}
+
+.postbox-container {
+  padding: 10px;
+}
+
+.postbox-title a:hover {
+  color: $prim-color;
+}
+
+.postbox .desc-text {
+    font-family: $font-family-1;
+}

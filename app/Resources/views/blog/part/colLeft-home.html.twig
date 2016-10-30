@@ -1,0 +1,5 @@
+{% include 'blog/widget/filtre.html.twig' with {'elements': filtrecat('article'), 'title' : 'Tous les articles', 'link_all' : path('home_article')}  %}
+
+{% include 'blog/widget/filtre.html.twig' with {'elements': filtrecat('tuto'), 'title' : 'Tous les tutos', 'link_all' :  path('home_tuto')}  %}
+
+{% include 'blog/widget/filtre.html.twig' with {'elements': filtrecat('projet'), 'title' : 'Tous les projets', 'link_all' :  path('home_projet')}  %}

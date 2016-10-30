@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Android-dev.fr{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block urlCanonical %}{% endblock %}
+
+{% block nextstylesheets %}
+    {% stylesheets filter='cssrewrite' output='css/app_admin.css'
+        "assets/css/jquery-ui/jquery-ui.css"
+        "assets/css/jquery-ui/jquery-ui.structure.css"
+        "assets/css/jquery-ui/jquery-ui.theme.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+    {% block meta %}{% endblock %}
+{% endblock %}
+
+{% block header %}
+    <header>
+        {% include 'admin/part/header.html.twig' %}
+    </header>
+{% endblock %}
+
+{% block bodyContent %}
+    {% block breadcrumb %}
+    {% endblock %}
+    <div class="col-md-2 col-sm-12">
+    {% block colLeft %}{% endblock %}
+    </div>
+    <div class="col-md-10 content col-sm-12">
+        {% block colCenter %}
+            <div class="adminbox">
+            {% block body %}{% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+    <footer>
+        {% include 'admin/part/footer.html.twig' %}
+    </footer>
+{% endblock %}
+
+{% block nextJs %}
+    
+    {% javascripts filter="?jsqueeze" output="js/app_admin.js"
+            "assets/js/jquery-ui.js"
+            "assets/js/main_admin.js"
+            "assets/js/dataTables.js"
+    %}
+    
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block tracking %}
+{% endblock %}

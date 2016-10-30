@@ -1,0 +1,59 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Recherche sur android-dev.fr : {% if motCle is defined %}{{ motCle }}{% endif %} {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block description %}
+    Recherche sur android-dev.fr. 
+    Mots clés : {{ motCle }}.
+    {% if  page > 1 %}- Page {{ page }}.{% endif %}
+{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr/recherche/{% if motcle is defined %}{{ motcle.nom }}/{% endif %}{% if  page > 1 %}{{ page }}{% endif %}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <small>Recherche</small>
+        <h1>{{ motCle }}</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if articles is defined %}
+        <div class="container-fluid">
+            <div class="row grid">
+                {% for article in articles %}
+                    {% include 'blog/part/postbox.html.twig' with {'link_cat' : 'article_cat'} %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(articles) }}
+        </div>
+        
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(['trackSiteSearch',
+                // Search keyword searched for
+                "{{ motCle }}",
+                // Search category selected in your search engine. If you do not need this, set to false
+                false,
+                        // Number of results on the Search results page. Zero indicates a 'No Result Search Keyword'. Set to false if you don't know
+                {{ articles|length }}
+                ]);
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Android-dev.fr - Le site du développement pour Android {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block description %}{{ infosite()['infosite']['description'] | raw  }} {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr/{% if  page > 1 %}{{ page }}{% endif %}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{% block body %}
+    
+    {% if articles is defined %}
+        <div class="homebox">
+            <div class="sidebar-head">
+                <span><a href="{{ path('home_article') }}">Derniers articles</a></span>
+            </div>
+            <div class="homebox-lastpost">
+                <div class="row sidebar-text">
+                    <!-- First Post -->
+                    {% for article in articles %}
+                        {% if loop.first %}
+                            {% include 'blog/part/homebox-first.html.twig' with {'article': article, 'link' : 'article_voir', 'link_param' : {'slug': article.slug}, 'link_cat' : 'article_cat'} %}
+                        {% else %}
+                            {% include 'blog/part/homebox-list.html.twig' with {'article': article, 'link' : 'article_voir', 'link_param' : {'slug': article.slug}, 'link_more' : 'home_article', 'text_more' : 'Plus d\'articles', 'link_cat' : 'article_cat'} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+            
+    {% if tutos is defined %}
+        <div class="homebox">
+            <div class="sidebar-head">
+                <span><a href="{{ path('home_tuto') }}">Derniers tutos</a></span>
+            </div>
+            <div class="homebox-lastpost">
+                <div class="row sidebar-text">
+                    <!-- First Post -->
+                    {% for tuto in tutos %}
+                        {% if loop.first %}
+                            {% include 'blog/part/homebox-first.html.twig' with {'article': tuto, 'link' : 'article_voir', 'link_param' : {'slug': tuto.slug}, 'link_cat' : 'tuto_cat'} %}
+                        {% else %}
+                            {% include 'blog/part/homebox-list.html.twig' with {'article': tuto, 'link' : 'article_voir', 'link_param' : {'slug': tuto.slug}, 'link_more' : 'home_tuto', 'text_more' : 'Plus de tutos', 'link_cat' : 'tuto_cat'} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+            
+    {% if projets is defined %}
+        <div class="homebox">
+            <div class="sidebar-head">
+                <span><a href="{{ path('home_projet') }}">Derniers projets</a></span>
+            </div>
+            <div class="homebox-lastpost">
+                <div class="row sidebar-text">
+                    <!-- First Post -->
+                    {% for projet in projets %}
+                        {% if loop.first %}
+                            {% include 'blog/part/homebox-first.html.twig' with {'article': projet, 'link' : 'projet_voir', 'link_param' : {'slug': projet.slug}} %}
+                        {% else %}
+                            {% include 'blog/part/homebox-list.html.twig' with {'article': projet, 'link' : 'projet_voir', 'link_param' : {'slug': projet.slug}, 'link_more' : 'home_projet', 'text_more' : 'Plus de projet'} %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

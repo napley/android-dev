@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des android - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des android</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_android_new') }}">Create a new android</a>
+        </li>
+    </ul>
+        
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for android in androids %}
+            <tr>
+                <td><a href="{{ path('admin_android_show', { 'id': android.id }) }}">{{ android.id }}</a></td>
+                <td>{{ android.titre }}</td>
+                <td>{{ android.code }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_android_show', { 'id': android.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_android_edit', { 'id': android.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% include 'blog/widget/tools.html.twig' %}
+
+{% include 'blog/part/widgetbox-one.html.twig' with {'article': toparticle(), 'title' : 'à la une'} %}
+{% include 'blog/widget/pubRight_1.html.twig' %}
+
+{% include 'blog/part/widgetbox-multi.html.twig' with {'articles': toppiwik(5), 'title' : 'Top des 7 derniers jours'} %}
+{% include 'blog/widget/pubRight_2.html.twig' %}
+
+{% include 'blog/part/widgetbox-multi.html.twig' with {'articles': lastupdate(), 'title' : 'Mise à jour'} %}
+{% include 'blog/widget/pubRight_3.html.twig' %}

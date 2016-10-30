@@ -1,0 +1,240 @@
+.articlebox {
+    background: $white;
+    padding: 0;
+    border: 1px solid $gray-light;
+    box-shadow: 8px 8px 0 $gray-light;
+    margin: 30px 0;
+}
+
+.articlebox-thumbs {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        display: block;
+        position: relative;
+        width: auto;
+        transition: transform 0.4s ease-out;
+        max-height: 250px;
+        margin: auto;
+    }
+}
+
+.articlebox-outer {
+    padding: 25px 40px;
+    text-align: center;
+
+    .meta {
+        display: inline-block;
+        padding-bottom: 15px;
+
+    & > span {
+            border-bottom: 1px solid $prim-color;
+            padding: 8px 4px;
+            margin: 0 8px 0 0;
+            display: inline-block;
+
+            &.date {
+                color: $gray-darker;
+            }
+        }
+    }
+}
+
+.articlebox-title {
+    font-family: $font-family-2;
+    font-weight: 300;
+    color: $gray-darker;
+    text-transform: capitalize;
+    margin-top: 24px;
+    font-size: 32px;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+}
+
+.articlebox-text {
+    padding: 25px 40px;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: $gray-lighter-2;
+    img {
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+        padding: 4px;
+        line-height: 1.42857143;
+        background-color: $white;
+        border: 1px solid $gray-light;
+        border-radius: 4px;
+        margin-right: 10px;
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    
+    h2 {
+        margin: 24px 0 16px;
+        margin-top: 48px;
+        color: #000;
+        letter-spacing: 1px;
+        font-size: 22px;
+    }
+    
+    h3 {
+        margin: 24px 0 16px;
+        margin-top: 28px;
+        color: #000;
+        letter-spacing: 1px;
+        font-size: 16px;
+    }
+    
+    p:first-child {
+        font-size: 19px;
+        line-height: 28px;
+        font-weight: 300;
+        margin-bottom: 20px;
+    }
+    
+    dl.related-tools {
+        dt {
+            font-weight: normal;
+        }
+        
+        dd {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.share-post {
+    padding: 0 0 15px 0;
+}
+
+.share-post h4 {
+    margin: 0 0 15px 0;
+    background-color: $prim-color;
+    padding: 15px 0;
+    color: $white;
+}
+
+.articlebox-tag {
+    border-top: 1px solid $gray-light;
+    margin-top: 15px;
+    padding: 15px 0 0 0;
+
+    a {
+        background: $gray-lighter-2;
+        color: $gray-darker;
+        font-size: 12px;
+        display: inline-block;
+        margin-bottom: 8px;
+        margin-right: 5px;
+        padding: 8px;
+
+        &:hover {
+            color: $white;
+            background-color: $prim-color;
+        }
+    }
+}
+
+.widgetbox {
+    margin-bottom: 50px;
+    background: $white;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.07);
+}
+
+#relatedbox img {
+    max-height: 100px;
+    width: auto;
+    margin: auto;
+}
+
+.syntaxhighlighter table .container:before {
+    display: none !important;
+}
+
+.syntaxhighlighter {
+    overflow: hidden !important;
+}
+
+.step-text {
+    list-style: none;
+    padding-left: 0;
+    margin: 24px 0;
+    counter-reset: b;
+    li {
+        position: relative;
+        padding-left: 60px;
+        margin-bottom: 24px;
+        &::before {
+            content: counter(b,decimal-leading-zero) ".";
+            counter-increment: b;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #606873;
+            font-size: 22px;
+            width: 42px;
+            height: 34px;
+            line-height: 34px;
+            font-weight: 600;
+        }
+    }
+
+    h3 {
+        font-weight: 500;
+        line-height: 35px;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        color: #000;
+        letter-spacing: 1px;
+        font-size: 18px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+}
+
+.header-p {
+    font-size: 19px;
+    line-height: 28px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+#chart_container {
+    //position: relative;
+    //display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#chart {
+    display: inline-block;
+    margin-left: 30px;
+}
+#y_axis {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+}
+
+#legend {
+    //display: inline-block;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+}
+
+#legend li {
+    display: inline-block;
+    //float: left;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+}
+
+#preview {
+    margin-left: 30px;
+}

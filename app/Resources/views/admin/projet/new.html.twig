@@ -1,0 +1,37 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Création d'un projet - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Création d'un projet</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        
+        <div>
+            <fieldset>
+                <legend>Partie</legend>
+                <label class="labelClick" onclick="addPartProject();" >Ajouter</label>
+                
+                <ul id="listePartProject">
+
+                </ul>
+
+                <select id="partProject">
+                {% for part in partproject() %}
+                    <option value="{{ part.id }}">{{ part.id }} - {{ part.titre }}</option>
+                {% endfor %}    
+                </select>
+                <input id="indexPartProject" class="indexPartProject" type="text" maxlength="3" size="3" />
+            </fieldset>
+        </div>
+        
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_projet_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

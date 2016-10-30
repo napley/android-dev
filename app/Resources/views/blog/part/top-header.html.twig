@@ -1,0 +1,28 @@
+<div class="top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 hidden-xs">
+                {{ headerquote().texte | raw }}
+            </div>
+            <div class="col-sm-3">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="https://twitter.com/androiddevfr" target="_blank" data-toggle="tooltip" title="twitter" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                
+                        <li><a href="https://www.facebook.com/androiddev.fr/" data-toggle="tooltip" target="_blank" title="facebook" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://plus.google.com/+Android-devFr" data-toggle="tooltip" target="_blank" title="Google Plus" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a data-original-title="RSS" target="_blank" title="flux rss" data-toggle="tooltip" href="{{ path('flux_rss') }}"><i class="fa fa-rss"></i></a></li>
+                        <li>
+                            <div class="box-search">
+                                <form action="{{ path('search_form') }}" method="post" role="search">
+                                    <input class="search-input" placeholder="Taper ici votre recherche" name="motCles" type="search" />
+                                    <div class="icon"></div>
+                                </form>
+                            </div>
+                            <a title="" data-original-title="" href="#" class="icon"><i class="fa fa-search"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

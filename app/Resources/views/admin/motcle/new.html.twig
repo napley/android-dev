@@ -1,0 +1,18 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Création d'un mot clé - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Création d'un mot clé</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_motcle_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

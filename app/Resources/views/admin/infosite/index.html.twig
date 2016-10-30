@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %} Gestion des sites - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des sites</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_infosite_new') }}">Create a new infoSite</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for infoSite in infoSites %}
+            <tr>
+                <td><a href="{{ path('admin_infosite_show', { 'id': infoSite.id }) }}">{{ infoSite.id }}</a></td>
+                <td>{{ infoSite.titre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_infosite_show', { 'id': infoSite.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_infosite_edit', { 'id': infoSite.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

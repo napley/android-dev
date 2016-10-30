@@ -1,0 +1,247 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Historique de la fragmentation des versions d'Android | Android-dev.fr{% endblock %}
+
+{% block description %}Historique de la fragmentation des versions d'Android depuis 2010{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr{{ path('fragmentation') }}{% endblock %}
+
+{% block meta %}
+    
+        {% stylesheets filter="scssphp" output="css/fragmentation.css"
+                "assets/scss/fragmentation/jquery-ui.scss"
+                "assets/scss/fragmentation/graph.scss"
+                "assets/scss/fragmentation/detail.scss"
+                "assets/scss/fragmentation/legend.scss"
+                "assets/scss/fragmentation/extensions.scss"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <small>Outils</small>
+        <h1>Fragmentation</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="articlebox">
+        <div class="articlebox-outer">
+            <h1 class="articlebox-title">Historique de la fragmentation des versions d'Android</h1>
+        </div>
+        <div class="articlebox-text">
+            <p>Cette page intègre les statistiques fournit par Google sur la présence des versions Android depuis décembre 2009. On remarque très clairement la popularité qu'a eu la version Gingerbread sorti durant l'été 2011.
+            Jelly Bean devrait être la version la plus populaire pendant de nombreux mois, surtout qu'elle regroupe les version 4.1, 4.2 et 4.3.
+            </p>
+            <br />
+
+            <div id="legend"></div>
+            <div id="chart_container">
+                <div id="y_axis"></div>
+                <div id="chart"></div>
+
+                <div id="timeline"></div>
+                <div id="preview"></div>
+            </div>
+
+            <h3>Dernier articles sur la fragmentation Android</h3>
+            <dl class="related-tools">
+                {% for article in articlekey(64, 7) %}
+                    <dt><a onclick="javascript:_paq.push(['trackEvent', 'Clic', 'FragArticle']);"  title="{{ article.titre | raw }}" href="{{ path('article_voir', {'slug': article.slug}) }}">{{ article.titre | raw }}</a></dt>
+                    <dd>{{ article.sousTitre | raw }}</dd>
+                {% endfor %}
+            </dl>
+        
+        </div>
+        <div class="share-post text-center">
+            <h4>Partage</h4>
+            <div class="social-icons">
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+            <div class="articlebox-tag">	
+                <h5>Mots clés</h5>
+                    <a title="fragmentation" href="{{ path('motcle', {'slug': 'fragmentation'}) }}"><span class="mot-slider ">fragmentation</span></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>                        
+
+    </div>
+
+    <div class="widgetbox">
+        <div class="sidebar-head">
+            <span>Ceci pourrait vous intéresser</span>
+        </div>
+        <div class="sidebar-text">
+            <div class="owl-carousel" id="relatedbox">
+                {% for article in links %}
+                    <div>
+                        <a href="{{ path('article_voir', {'slug': article.slug}) }}"><img alt="" src="{{ article.vignette }}"></a>
+                        <div class="recent-post-text">
+                            <h4><a href="{{ path('article_voir', {'slug': article.slug}) }}">{{ article.titre | raw }}</a></h4>
+                            <div class="post-date">
+                                <i class="fa fa-clock-o"></i> {{ article.getPublishedAt()|date("d/m/Y") }}
+                            </div>
+                            <div class="post-date">
+                                <a href="{{ path('article_voir', {'slug': article.slug}) }}">
+                                    <i class="fa fa-comments-o"></i>
+                                    <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="widgetbox">
+        <div class="sidebar-head">
+            <span>Commentaires</span>
+        </div>
+        <div class="sidebar-text">
+            <div id="disqus_thread"></div>
+            <script>
+            var disqus_config = function () {
+            this.page.url = 'http://www.android-dev.fr/fragmentation/';
+            this.page.identifier = "1";
+            this.page.title = "Historique de la fragmentation des versions d'Android | Android-dev.fr";
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//androiddev.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block nextJs %}
+
+
+    <script src="{{ asset('js/fragmentation/d3.v3.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Class.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Compat.ClassList.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.Area.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.Line.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.Bar.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.ScatterPlot.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Renderer.Stack.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.RangeSlider.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.RangeSlider.Preview.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.HoverDetail.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Annotate.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Legend.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Axis.Time.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Behavior.Series.Toggle.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Behavior.Series.Order.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Behavior.Series.Highlight.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Smoother.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Fixtures.Time.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Fixtures.Time.Local.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Fixtures.Number.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Fixtures.RandomData.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Fixtures.Color.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Color.Palette.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/Rickshaw.Graph.Axis.Y.js') }}"></script>
+    <script src="{{ asset('js/fragmentation/extensions.js') }}"></script>
+    
+    
+    <script>
+        var palette = new Rickshaw.Color.Palette();
+            {% for courbe,value in Points %}
+                var   {{ courbe }} = [{% for timestamp,pct in Points[courbe]['data'] %}{x:{{ timestamp }}, y: {{ pct }}}{% if not loop.last %},{% endif %} {% endfor %}];
+            {% endfor %}
+
+                //var data = [{x: -1893456000, y: 10}, {x: -1577923200, y: 15}, {x: -1262304000, y: 20}, {x: -946771200, y: 18}, {x: -631152000, y: 26}, {x: -315619200, y: 42}, {x: 0, y: 40}, {x: 315532800, y: 22}, {x: 631152000, y: 30}, {x: 946684800, y: 35}, {x: 1262304000, y: 40}, {x: 1462304000, y: 22}, {x: 1662304000, y: 30}, {x: 1862304000, y: 35}, {x: 2062304000, y: 40}];
+                //var data2 = [{x: -1893456000, y: 90}, {x: -1577923200, y: 85}, {x: -1262304000, y: 80}, {x: -946771200, y: 82}, {x: -631152000, y: 74}, {x: -315619200, y: 58}, {x: 0, y: 60}, {x: 315532800, y: 78}, {x: 631152000, y: 70}, {x: 946684800, y: 65}, {x: 1262304000, y: 60}, {x: 1462304000, y: 78}, {x: 1662304000, y: 70}, {x: 1862304000, y: 65}, {x: 2062304000, y: 60}];
+
+                var width = 850;
+                if (window.matchMedia("(max-width: 485px)").matches) {
+                width = 330;
+                } else if (window.matchMedia("(max-width: 590px)").matches) {
+                width = 430;
+                } else if (window.matchMedia("(max-width: 900px)").matches) {
+                width = 530;
+                } else if (window.matchMedia("(max-width: 990px)").matches) {
+                width = 630;
+                } else if (window.matchMedia("(max-width: 1200px)").matches) {
+                width = 530;
+                } else if (window.matchMedia("(max-width: 1500px)").matches)  {
+                width = 650;
+                }
+
+
+                var graph = new Rickshaw.Graph({
+                element: document.querySelector("#chart"),
+                        width: width,
+                        height: 340,
+                        renderer: 'area',
+                        stroke: true,
+                        preserve: true,
+                        series: [
+
+            {% for courbe,value in Points %}
+                        {
+                        name : "{{ Points[courbe]['titre'] }} ({{ Points[courbe]['code'] }})",
+                                data:{{ courbe }},
+                                color: palette.color()
+                        }{% if not loop.last %},{% endif %}
+            {% endfor %}
+                        ]
+                });
+                var x_axis = new Rickshaw.Graph.Axis.Time({graph: graph});
+                var y_axis = new Rickshaw.Graph.Axis.Y({
+                graph: graph,
+                        orientation: 'left',
+                        tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+                        element: document.getElementById('y_axis'),
+                });
+                graph.render();
+                var legend = new Rickshaw.Graph.Legend({
+                element: document.querySelector('#legend'),
+                        graph: graph
+                });
+                var smoother = new Rickshaw.Graph.Smoother({
+                graph: graph,
+                        element: $('#smoother')
+                });
+                var shelving = new Rickshaw.Graph.Behavior.Series.Toggle({
+                graph: graph,
+                        legend: legend
+                });
+                var hoverDetail = new Rickshaw.Graph.HoverDetail({
+                graph: graph
+                });
+                var preview = new Rickshaw.Graph.RangeSlider.Preview({
+                graph: graph,
+                        element: document.getElementById('preview'),
+                });
+                var previewXAxis = new Rickshaw.Graph.Axis.Time({
+                graph: preview.previews[0],
+                        timeFixture: new Rickshaw.Fixtures.Time.Local(),
+                        ticksTreatment: ticksTreatment
+                });
+                previewXAxis.render();
+    </script>
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

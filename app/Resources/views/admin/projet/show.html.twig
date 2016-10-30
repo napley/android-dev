@@ -1,0 +1,58 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir le projet {{ projet.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Voir le projet "{{ projet.titre }}"</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ projet.titre }}</td>
+            </tr>
+            <tr>
+                <th>Vignette</th>
+                <td>{{ projet.vignette }}</td>
+            </tr>
+            <tr>
+                <th>Soustitre</th>
+                <td>{{ projet.sousTitre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ projet.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Visible</th>
+                <td>{% if projet.visible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Contenufin</th>
+                <td>{{ projet.contenuFin }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ projet.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_projet_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_projet_edit', { 'id': projet.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

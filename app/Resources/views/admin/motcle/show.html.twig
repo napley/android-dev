@@ -1,0 +1,38 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir le mot clé {{ motCle.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Voir le mot clé {{ motCle.nom }}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ motCle.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ motCle.nom }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ motCle.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_motcle_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_motcle_edit', { 'id': motCle.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

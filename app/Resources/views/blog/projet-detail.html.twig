@@ -1,0 +1,178 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}{{ projet.titre | raw }} | android-dev.fr{% endblock %}
+
+{% block description %}Le projet {{ projet.titre | raw }} du site android-dev.fr{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr{{ path('projet_voir', {'slug': projet.slug}) }}{% endblock %}
+
+{% block meta %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "name": "{{ projet.titre | raw }}",
+        "dateModified" : "{{ projet.getUpdated()|date("d/m/Y H:i:s") }}",
+        "datePublished" : "{{ projet.getCreated()|date("d/m/Y H:i:s") }}",
+        "headline" : "{{ projet.titre | raw }}",
+        "articleBody" : "{{ projet.contenu }} {{ projet.contenuFin }}",
+        "headline" : "{{ projet.titre | raw }}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Android-dev.fr",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://example.com/logo.jpg",
+                "width": 600,
+                "height": 60
+            }
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://www.android-dev.fr{{ projet.vignette }}",
+            "height": 300,
+            "width": 400
+        },
+        "description": "{{ projet.sousTitre | raw }}",
+        "author": {
+            "@type": "Person",
+            "name": "Androiddev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http://www.android-dev.fr{{ path('projet_voir', {'slug': projet.slug}) }}"
+        }
+    }
+    </script>
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block body %}
+    {% if projet is defined %}
+
+        <div class="articlebox">
+
+            <div class="articlebox-thumbs">
+                <img src="{{ projet.vignette }}" alt="{{ projet.titre | raw }}">
+            </div>
+            <div class="articlebox-outer">
+                <div class="meta">
+                    <span class="date">{{ projet.getCreated()|date("d/m/Y") }}</span>
+                    <span>
+                        <a class="comments-icon" data-original-title="12" title="" data-toggle="tooltip" href="#disqus_thread">
+                            <span class="disqus-comment-count" data-disqus-identifier="p{{ projet.id }}">0</span>
+                            <i class="fa fa-comments-o"></i>
+                        </a>
+                    </span>
+                </div>
+                <h1 class="articlebox-title">{{ projet.titre | raw }}</h1>
+            </div>
+            <div class="articlebox-text">
+                <div class="header-p">{{ projet.sousTitre | raw }}</div>
+                <h2 class="started">Introduction</h2>
+                {{ projet.contenu | raw }}
+                
+                <ul class="step-text">
+                {% for articleProjet in projet.articles %}
+                    {% if articleProjet.article.visible == true %}
+                        <li>
+                            <h3><a href="{{ path('article_voir', {'slug': articleProjet.article.slug}) }}">{{ articleProjet.article.titre | raw }}</a></h3>
+                            <p>{{ articleProjet.article.sousTitre | raw }}</p>
+
+                            {% for motCle in articleProjet.article.getMotCles() %}
+                                <a class="projetbox-liststep-cat" href="{{ path('motcle', {'slug': motCle.slug}) }}" rel="mot cle tag">
+                                    <i class="fa fa-tag"></i> {{ motCle.getNom() }}
+                                </a>
+                            {% endfor %}
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                
+                <h2 class="started">Conclusion</h2>
+                {{ projet.contenuFin | raw }}
+                
+            </div>
+            <div class="share-post text-center">
+                <h4>Partage</h4>
+                <div class="social-icons">
+                    <!--<ul>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>-->
+                    <div class="addthis_sharing_toolbox"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="widgetbox">
+            <div class="sidebar-head">
+                <span>Ceci pourrait vous intéresser</span>
+            </div>
+            <div class="sidebar-text">
+                <div class="owl-carousel" id="relatedbox">
+
+                    {% for projet in links %}
+                        <div>
+                            <a href="{{ path('projet_voir', {'slug': projet.slug}) }}"><img alt="" src="{{ projet.vignette }}"></a>
+                            <div class="recent-post-text">
+                                <h4><a href="{{ path('projet_voir', {'slug': projet.slug}) }}">{{ projet.titre | raw }}</a></h4>
+                                <div class="post-date">
+                                    <i class="fa fa-clock-o"></i> {{ projet.getCreated()|date("d/m/Y") }}
+                                </div>
+                                <div class="post-date">
+                                    <a href="{{ path('projet_voir', {'slug': projet.slug}) }}">
+                                        <i class="fa fa-comments-o"></i>
+                                        <span class="disqus-comment-count" data-disqus-identifier="p{{ projet.id }}">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="widgetbox">
+            <div class="sidebar-head">
+                <span>Commentaires</span>
+            </div>
+            <div class="sidebar-text">
+                <div id="disqus_thread"></div>
+                <script>
+                var disqus_config = function () {
+                this.page.url = 'http://www.android-dev.fr/projet/{{ projet.slug }}';
+                this.page.identifier = "p{{ projet.id }}";
+                this.page.title = "{{ projet.titre | raw }}";
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+
+                s.src = '//androiddev.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

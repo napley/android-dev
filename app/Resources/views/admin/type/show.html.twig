@@ -1,0 +1,42 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir le type {{ type.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Voir le type "{{ type.nom }}"</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ type.nom }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ type.slug }}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if type.deletedAt %}{{ type.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_type_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_type_edit', { 'id': type.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

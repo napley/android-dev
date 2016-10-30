@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des types - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des types</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_type_new') }}">Create a new type</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td><a href="{{ path('admin_type_show', { 'id': type.id }) }}">{{ type.id }}</a></td>
+                <td>{{ type.nom }}</td>
+                <td>{{ type.slug }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_type_show', { 'id': type.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_type_edit', { 'id': type.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

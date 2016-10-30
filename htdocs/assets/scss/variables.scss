@@ -1,0 +1,46 @@
+//== Colors
+//
+//## Gray and brand colors
+
+$prim-color:             #025D8C;
+$prim-color-alt:             #fe4444;
+$gray-darker:            #323232;
+$gray-darker-2:            #303030;
+$gray-dark:              #666;
+$gray:                   #999;
+$gray-light:             #dadada;
+$gray-lighter:           #efefef;
+$gray-lighter-2:           #f1f0f0;
+$white:                 #FFF;
+$black:                 #000;
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-family-1:  'Open Sans', sans-serif;
+$font-family-2:  'Ubuntu',sans-serif;
+
+// Chemin font bootstrap
+
+$icon-font-path:          "../fonts/bootstrap/";
+$icon-font-name:            "glyphicons-halflings-regular.eot";
+
+@mixin bulleSocial() {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    background: $gray-lighter-2;
+    font-size: 18px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+
+    &:hover{
+        background: $prim-color;
+        color: $white;
+    }
+}

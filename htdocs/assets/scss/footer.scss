@@ -1,0 +1,68 @@
+.widget-footer {
+    background: $white;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.footer-dark {
+    position: relative;
+    color: $gray;
+}
+
+.text-footer {
+    position: relative;
+    padding: 0 25px 0 0;
+    z-index: 50;
+    font-size: 14px;
+}
+
+.footer-logo {
+    display: inline-block;
+    padding: 0;
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.footer-dark a {
+    color: $white;
+}
+
+.social-icons.footer {
+    padding: 25px 0 0 0;
+    ul li {
+        line-height: inherit;
+        padding-right: 3px;
+        a {
+            @include bulleSocial();
+        }
+    }
+}
+
+.widget-footer .sidebar-head {
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+
+.footer-dark::after {
+    background: $gray-darker-2;
+    content: "*";
+    height: 5000px;
+    position: absolute;
+    right: 0;
+    top: -100px;
+    width: 2000px;
+    z-index: 1;
+}
+
+.footer-inner {
+    padding: 60px 0;
+    background: $gray-lighter-2;
+    border-top: 1px solid #e6e6e6;
+    text-transform: capitalize;
+}
+
+.widget-footer .post-text {
+    padding: 0;
+}

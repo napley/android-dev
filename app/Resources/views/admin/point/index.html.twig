@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des points - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des points</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_point_new') }}">Create a new point</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pct</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for point in points %}
+            <tr>
+                <td><a href="{{ path('admin_point_show', { 'id': point.id }) }}">{{ point.id }}</a></td>
+                <td>{{ point.pct }}</td>
+                <td>{% if point.date %}{{ point.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_point_show', { 'id': point.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_point_edit', { 'id': point.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

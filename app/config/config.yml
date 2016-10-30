@@ -1,0 +1,209 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ['%locale%'] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+    
+assetic:
+    filters:
+        jsqueeze: ~
+        scssphp:
+            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+        cssrewrite: ~
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: blog/part/pagination.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+        
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: knp_menu.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig
+    
+eko_feed:
+    feeds:
+        article:
+            title:       "Les derniers articles d'android-dev.fr"
+            description: "Les derniers articles d'android-dev.fr"
+            link:        'http://www.android-dev.fr'
+            encoding:    'utf-8'
+            author:      'Android-dev.fr'
+            
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+
+ivory_ck_editor:
+    plugins:
+        wordcount:
+            path:     "/bundles/app/ckeditor/wordcount/"
+            filename: "plugin.js"
+        notification:
+            path:     "/bundles/app/ckeditor/notification/"
+            filename: "plugin.js"
+        autogrow:
+            path:     "/bundles/app/ckeditor/autogrow/"
+            filename: "plugin.js"
+        syntaxhighlight:
+            path:     "/bundles/app/ckeditor/syntaxhighlight/"
+            filename: "plugin.js"
+    configs:
+        config_light:
+            extraPlugins:           wordcount,notification,autogrow,syntaxhighlight
+            #filebrowserUploadRoute: "my_route"
+            autoGrow_onStartup:     "true"
+            autoGrow_maxHeight:     "1000"
+            autoGrow_minHeight:     "100"
+            language:               "fr"
+            input_sync:             "true"
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: 
+            toolbar:                "toolbar_light"
+            
+        config_complete:
+            extraPlugins:           wordcount,notification,autogrow,syntaxhighlight
+            #filebrowserUploadRoute: "my_route"
+            autoGrow_onStartup:     "true"
+            autoGrow_maxHeight:     "1000"
+            autoGrow_minHeight:     "100"
+            language:               "fr"
+            input_sync:             "true"
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: 
+                instance: ckeditor
+                homeFolder: ''
+            toolbar:                "toolbar_complete"
+
+    toolbars:
+        configs:
+            toolbar_light: [ "@document", "@copypaste", "@findreplace", "/", "@font", "@link", "@style" ]
+            toolbar_complete: [ "@document", "@copypaste", "@findreplace", "/", "@list", "@link", "@object", "@syntax", "/", "@font", "@style" ]
+        items:
+            document:    [ "Source", '-','Templates']
+            copypaste:   [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ]
+            findreplace: [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ]
+            font:        [ 'Bold','Italic','Underline','Strike', 'Blockquote','Subscript','Superscript','-','RemoveFormat' ]
+            list:        [ 'NumberedList','BulletedList','-','Outdent','Indent','-','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ]
+            link:        [ 'Link','Unlink','Anchor' ]
+            object:      [ 'pbckcode', 'Image', 'Video', 'HorizontalRule', 'Table', 'SpecialChar', 'Iframe' ]
+            style:       [ 'Styles', 'Format','Font','FontSize', 'TextColor', 'BGColor' ]
+            syntax:      [ "Syntaxhighlight" ]
+            tool:        [ "Maximize" ]
+            
+fm_elfinder:
+    #assets_path: / # default is /assets, this is where css/js elfinder files are
+    instances:
+        ckeditor:
+            locale: '%locale%' # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                debug: false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        path: upload
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif', 'application/zip', 'audio/mpeg', 'text/csv', 'video/mp4', 'video/webm', 'application/pdf']
+                        upload_deny: ['all']
+                        upload_max_size: 8M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
+        form:
+            locale: '%locale%' # defaults to current request locale
+            editor: form # other choices are tinymce or simple, and form
+            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            connector:
+                debug: false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        driver: LocalFileSystem
+                        path: upload
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 8M

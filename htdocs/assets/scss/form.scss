@@ -1,0 +1,45 @@
+#form-user {
+    max-width: 640px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: $white;
+    border: 1px solid $gray-light;
+    font: bold 14px sans-serif;
+    margin-bottom: 40px;
+    
+    .link-logout {
+        padding: 10px;
+    }
+    
+    .error-message {
+        padding: 10px;
+        color: $prim-color-alt;
+    }
+    
+    .form-content {
+        padding: 35px;
+        text-align: center;
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 55px;
+            display: inline-block;
+            box-sizing: border-box;
+            color: $gray-darker;
+            font-size: 24px;
+            padding: 0 10px 15px;
+            border-bottom: 2px solid $prim-color;
+            margin: 0;
+        }
+        
+        form {
+            margin-top: 40px;
+
+            label {
+                text-align: right;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    
+}

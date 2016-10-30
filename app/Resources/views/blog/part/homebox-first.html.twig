@@ -1,0 +1,37 @@
+<div class="col-sm-6 homebox-firstpost">
+    <div class="homebox-firstpost-big">
+        <div class="homebox-firstpost_thumbnail">
+            <a href="{{ path(link, link_param) }}">
+                <img src="{{ article.vignette }}"/>
+            </a>
+        </div>
+        <div class="homebox_featured_content">
+            {% if article.getCategorie() is defined %}
+            <div class="homebox_content_meta">
+                <span class="homebox_category_name">
+                    <a href="{{ path(link_cat, {'slug': article.getCategorie().getSlug()}) }}" rel="category tag">
+                        <i class="fa fa-tag"></i> {{ article.getCategorie().getNom() }}
+                    </a>
+                </span>
+            </div>
+            {% endif %}
+            <h4><a href="{{ path(link, link_param) }}">{{ article.titre | raw }}</a></h4>
+            <div class="homebox-post-info">
+                <time class="homebox-date" datetime="{{ article.getPublishedAt()|date("Y-m-d") }}"><i>{{ article.getPublishedAt()|date("d/m/Y") }}</i></time>
+
+                <a class="homebox-comment" href="{{ path(link, link_param) }}">
+                    <span class="count disqus-comment-count" data-disqus-url="{{ path(link, link_param) }}">0</span> <i class="fa fa-comments-o"></i></a>
+            </div>
+            {{ article.sousTitre | raw }}
+
+            <div class="blog-bottom">
+                <div class="social-icons pull-left">
+                    <div class="addthis_sharing_toolbox" data-url="{{ path(link, link_param) }}" data-title="{{ article.titre | raw }}"></div>
+                </div>
+                <div class="pull-right"><a href="{{ path(link, link_param) }}" class="more-links">Lire la suite</a></div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="widgets-box">
+    <div class="sidebar-head"><span><a href="{{ link_all }}">{{ title }}</a></span></div>
+    <div class="sidebar-text">
+        <div class="tags">
+            {% for element in elements %}
+                <a href="{{ path(element.link, {'slug' : element.slug }) }}">{{ element.nom }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ infosite()['infosite']['titre'] | raw  }}{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block urlCanonical %}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{% block header %}
+    <div id="cookies-eu-banner" style="display: none;">
+        By continuing your visit to this site, you accept the use of cookies to make visits statistics.
+        <a href="{{ path('mentions') }}" id="cookies-eu-more">Read more</a>
+        <button id="cookies-eu-reject">Reject</button>
+        <button id="cookies-eu-accept">Accept</button>
+    </div>
+    <header>
+        {% include 'blog/part/header.html.twig' %}
+    </header>
+{% endblock %}
+
+
+{% block bodyContent %}
+    {% block breadcrumb %}
+    {% endblock %}
+    <div class="col-md-2 hidden-sm hidden-xs">
+    {% block colLeft %}{% endblock %}
+    </div>
+    <div class="col-md-7 content col-sm-9">
+    {% block colCenter %}
+        {% include 'blog/widget/pubTop.html.twig' %}
+        {% block body %}{% endblock %}
+    {% endblock %}
+    </div>
+    <div class="col-md-3 col-sm-3">
+        {% block colRight %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        {% include 'blog/part/footer.html.twig' %}
+    </footer>
+{% endblock %}
+
+{% block nextJs %}
+{% endblock %}
+
+{% block tracking %}
+    {{ infosite()['infosite']['codeAnalytics'] | raw  }}
+{% endblock %}

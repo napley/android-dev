@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Modification de l'article {{ article.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Modification de l'article "{{ article.titre }}"</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        
+        <div>
+            <fieldset>
+                <legend>Mot Clé</legend>
+                <label class="labelClick" onclick="addMotCle();" >Ajouter</label>
+                <div class="clear"></div>
+                <ul id="listeMotCle" data-url="{{ url('admin_mot_cle_list') }}">
+                    {% for motcle in article.MotCles %}
+                        <li><div class="ui-widget">
+                            <input name="motCle[]" value="{{ motcle.nom }}" />
+                            <button onclick="delMotCle(this);">x</button>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </fieldset>
+        </div>
+        
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_article_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

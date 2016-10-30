@@ -1,0 +1,41 @@
+<div class="col-sm-6 projetbox-header">
+    <div class="projetbox-header-big">
+        <div class="projetbox-header_thumbnail">
+            <a href="{{ path(link, link_param) }}">
+                <img src="{{ projet.vignette }}"/>
+            </a>
+        </div>
+        <div class="projetbox_featured_content">
+            <div class="projetbox_content_meta">
+                <span class="projetbox_nb_step">
+                    <i class="fa fa-list-ol" aria-hidden="true"></i> {{ projet.articles | length }} étapes
+                </span>
+            </div>
+            <h4><a href="{{ path(link, link_param) }}">{{ projet.titre | raw }}</a></h4>
+            <div class="projetbox-post-info">
+                <time class="projetbox-date" datetime="{{ projet.getCreated()|date("Y-m-d") }}"><i>{{ projet.getCreated()|date("d/m/Y") }}</i></time>
+
+                <a class="projetbox-comment" href="{{ path(link, link_param) }}">
+                    <span class="count disqus-comment-count" data-disqus-identifier="p{{ projet.id }}">0</span> 
+                    <i class="fa fa-comments-o"></i>
+                </a>
+            </div>
+            {{ projet.sousTitre | raw }}
+
+            <div class="blog-bottom">
+                <div class="social-icons pull-left">
+                    <!--<ul>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>-->
+                    <div class="addthis_sharing_toolbox" data-url="{{ path(link, link_param) }}" data-title="{{ projet.titre | raw }}"></div>
+                </div>
+                <div class="pull-right"><a href="{{ path(link, link_param) }}" class="more-links">Voir le projet</a></div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

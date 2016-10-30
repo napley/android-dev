@@ -1,0 +1,46 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir la catégorie {{ categorie.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Voir la catégorie {{ categorie.nom }}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ categorie.slug }}</td>
+            </tr>
+            <tr>
+                <th>Vignette</th>
+                <td>{{ categorie.vignette }}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if categorie.deletedAt %}{{ categorie.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_categorie_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_categorie_edit', { 'id': categorie.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

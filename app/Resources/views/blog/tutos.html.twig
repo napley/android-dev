@@ -1,0 +1,43 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Toutes les tutos {% if categorie is defined %}{{ categorie.nom }}{% endif %} du site android-dev.fr {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block description %}Toutes les tutos {% if categorie is defined %}{{ categorie.nom }}{% endif %} du site android-dev.fr {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr/tuto/{% if categorie is defined %}{{ categorie.nom }}/{% endif %}{% if  page > 1 %}{{ page }}{% endif %}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <small>Tutos</small>
+        <h1>{% if categorie is defined %}{{ categorie.nom }}{% else %}Tous{% endif %}</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if articles is defined %}
+        <div class="container-fluid">
+            <div class="row grid">
+                {% for article in articles %}
+                    {% include 'blog/part/postbox.html.twig' with {'link_cat' : 'tuto_cat'} %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(articles) }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

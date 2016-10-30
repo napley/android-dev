@@ -1,0 +1,47 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des projets - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Liste des projets</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_projet_new') }}">Create a new projet</a>
+        </li>
+    </ul>
+        
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Vignette</th>
+                <th>Soustitre</th>
+                <th>Visible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for projet in projets %}
+            <tr>
+                <td><a href="{{ path('admin_projet_show', { 'id': projet.id }) }}">{{ projet.id }}</a></td>
+                <td>{{ projet.titre }}</td>
+                <td><img src="{{ projet.vignette }}" width="40"/></td>
+                <td>{{ projet.sousTitre }}</td>
+                <td>{% if projet.visible %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_projet_show', { 'id': projet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_projet_edit', { 'id': projet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

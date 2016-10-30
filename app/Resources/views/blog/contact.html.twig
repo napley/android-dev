@@ -1,0 +1,47 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Contact | Android-dev.fr{% endblock %}
+
+{% block description %}Contact android-dev.fr{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr/{{ path('contact') }}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="articlebox">
+        <div class="articlebox-text">
+            <h1>Contacter Android-dev.fr</h1>
+            <h3>Formulaire de contact</h3>
+            <p>
+                {% if error %}
+                <div class="alert alert-danger">
+                    Echec d'envoie du mail
+                </div>
+                {% endif %}
+                {% if success %}
+                <div class="alert alert-success">
+                    Mail envoyé avec succès
+                </div>
+                {% endif %}
+            </p>
+            {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+            {{ form(form) }}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+
+{% endblock %}
+
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+
+{% endblock %}

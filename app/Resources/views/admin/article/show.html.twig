@@ -1,0 +1,70 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Voir l'article {{ article.id }} - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Article "{{ article.titre }} "</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ article.titre }}</td>
+            </tr>
+            <tr>
+                <th>Vignette</th>
+                <td>{{ article.vignette }}</td>
+            </tr>
+            <tr>
+                <th>Soustitre</th>
+                <td>{{ article.sousTitre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ article.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Visible</th>
+                <td>{% if article.visible %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Top</th>
+                <td>{% if article.top %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ article.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publishedat</th>
+                <td>{% if article.publishedAt %}{{ article.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if article.updated %}{{ article.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_article_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_article_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

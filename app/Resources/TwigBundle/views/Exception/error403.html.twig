@@ -1,0 +1,37 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Erreur 403 | Android-dev.fr{% endblock %}
+
+{% block description %}Page d'erreur d'android-dev.fr{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{#
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <small>{{ article.type.nom }}</small>
+        <h1>{{ article.categorie.nom }}</h1>
+    </div>
+{% endblock %}
+#}
+
+
+{% block body %}
+    
+    <script>
+    setTimeout(function () {
+        window.location.replace("/");
+    }, 2000);
+    </script>
+    <div class="articlebox">
+
+        <div class="articlebox-text">
+            <h1>Erreur 403 - Vous n'avez pas le droit d'accéder à cette page</h1>
+            <p>Vous allez être redirigé sur la page d'acceil</p>
+        </div>                      
+
+    </div>
+
+
+{% endblock %}

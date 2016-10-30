@@ -1,0 +1,65 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Mentions légales | Android-dev.fr{% endblock %}
+
+{% block description %}Mentions légales android-dev.fr{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr{{ path('mentions') }}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="articlebox">
+        <div class="articlebox-text">
+
+            <h2>Éditeur et Responsable de la publication</h2>
+
+            <p>Fabien CHOMETTON (<a title="contact" href="{{ path('contact') }}">Contact</a>)</p>
+            <p>Les propos tenus sur ce site ne représentent que et uniquement l’opinion de leur auteur, et n’engagent pas les sociétés, entreprises ou collectifs auxquels il contribue ou dont il peut être associé ou employé.</p>
+            <h2>Hébergement</h2>
+
+            <p>Ce blog est hébergé par GANDI, 15 place de la nation, 75011 Paris, France.
+                Cet hébergeur possède à ce jour les éléments d’identification personnelle me concernant.</p>
+            <h2>Données personnelles</h2>
+
+            <p>Les données personnelles collectées par Android-dev.fr sont uniquement destinées à un usage interne. En aucun cas ces données ne seront cédées ou vendues à des tiers. Seuls les commentaires enregistrés sur ce blog donnent lieu à un enregistrement des informations de connexion (adresse IP, pseudonyme et éventuellement adresse e-mail et site web).
+                Conformément à l’article 39 de la loi du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, vous avez un droit d’accès, de modification et d’opposition sur vos données personnelles enregistrées par le blog.
+                Dans ce cas, utilisez le formulaire de contact.</p>
+            <h2>Conditions de modération des commentaires du blog</h2>
+
+            <p>Les commentaires et trackbacks/pingback de Android-dev.fr sont modéré a posteriori. Le non respect de l’une des règles suivantes entraîne la suppression du commentaire ou du trackback/pingback concerné :</p>
+            <ul>
+                <li>Commentaires diffamatoires, racistes, pornographiques, pédophiles, incitant à délit, crimes ou suicides,</li>
+                <li>Commentaires reproduisant une correspondance privée sans l’accord des personnes concernées,</li>
+                <li>Commentaires agressifs ou vulgaires,</li>
+                <li>Commentaires visant uniquement à mettre en ligne un lien vers un site extérieur (spam de commentaires ou de trackback/pingback).</li>
+            </ul>
+            <p>Les commentaires sont modérés a priori. Ne postez pas plusieurs fois votre commentaire si vous ne le voyez pas apparaître. Merci.</p>
+
+            <h2>Licences, droits de reproduction</h2>
+
+            <p>Tous droits réservés. La reproduction du contenu de ce blog, en tout ou en partie, est interdite sans la permission écrite de l’auteur (sauf mention particulière). Tout autre matériel contenu sur ce site ne nous appartenant pas : photos, textes, images, logos, noms de produits ou marques citées… est la propriété de leurs détenteurs respectifs.</p>
+
+            <h2>Politique de gestion des cookies & trackers</h2>
+            <p>Nous utilisons des cookies persistant afin d'améliorer l'expérience utilisateur. Ces cookies sont conservés sur votre ordinateur même après fermeture de votre navigateur et réutilisé lors des prochaines visites sur nos sites. Nous utilisons aussi des cookies afin de mieux comprendre comment vous interagissez avec nos sites et nos services et afin d'améliorer ces mêmes sites et services.
+            <p>Google en tant que vendeur tiers, utilise des cookies pour diffuser de la publicité sur le site. L'utilisation par Google de cookies DART permet de diffuser de la publicité aux internautes sur ce site et des sites tiers. Les utilisateurs peuvent se désengager de ce procédé en se rendant <a href="http://www.google.com/privacy_ads.html" target="_blank">sur ce site</a>.</p>
+            <p>D'autres sociétés tierces diffusent des publicités et collectent des données anonymisées lors de vos visites sur ce site. Ces sociétés collectent uniquement des données anonymisées telles que le type de votre navigateur, la date et l'heure de votre visite, la catégorie de la publicité cliquée. Ces sociétés utilisent les cookies ou un jeton web tiers pour collecter cette information.</p>
+            <p>Pour en savoir plus sur ces pratiques vous pouvez <a href="http://www.networkadvertising.org/managing/opt_out.asp" target="_blank">vous rendre ici</a> et pour vous désengager de ce procédé vous devez aller dans les paramêtres de votre navigateur et utiliser la fonctionnalité d'effacement des cookies. Regardez la vidéo <a href="https://www.youtube.com/watch?v=Ij9EkAQzVvM" target="_blank">ici</a> pour savoir comment faire..</p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+
+{% endblock %}
+
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+
+{% endblock %}

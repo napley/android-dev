@@ -1,0 +1,50 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}Toutes les projets du site android-dev.fr {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block description %}Toutes les projets du site android-dev.fr {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr/projet/{% if  page > 1 %}{{ page }}{% endif %}{% endblock %}
+
+{% block meta %}
+{% endblock %}
+
+{% block breadcrumb %}
+    <div class="breadcrumb">
+        <small>Projets</small>
+        <h1>Tous</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if projets is defined %}
+        {% for projet in projets %}
+            <div class="projetbox">
+                <div class="projetbox-step">
+                    <div class="row sidebar-text">
+                        {% include 'blog/part/projetbox-first.html.twig' with {'projet': projet, 'link' : 'projet_voir', 'link_param' : {'slug': projet.slug}, 'link_cat' : 'article_cat'} %}
+                            
+                        {% for articleProjet in projet.articles %}
+                            {% include 'blog/part/projetbox-list.html.twig' with {'article': articleProjet.article, 'link' : 'article_voir', 'link_param' : {'slug': articleProjet.article.slug}, 'link_more' : 'home_article', 'text_more' : 'Plus d\'articles', 'link_cat' : 'article_cat'} %}
+                            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="navigation">
+            {{ knp_pagination_render(projets) }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-home.html.twig' %}
+                        
+{% endblock %}
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

@@ -1,0 +1,44 @@
+app_quote:
+    resource: "@AppBundle/Controller/QuoteController.php"
+    type:     annotation
+
+app_info_site:
+    resource: "@AppBundle/Controller/InfoSiteController.php"
+    type:     annotation
+
+app_mot_cle:
+    resource: "@AppBundle/Controller/MotCleController.php"
+    type:     annotation
+
+app_point:
+    resource: "@AppBundle/Controller/PointController.php"
+    type:     annotation
+
+app_android:
+    resource: "@AppBundle/Controller/AndroidController.php"
+    type:     annotation
+
+app_projet:
+    resource: "@AppBundle/Controller/ProjetController.php"
+    type:     annotation
+
+app_type:
+    resource: "@AppBundle/Controller/TypeController.php"
+    type:     annotation
+
+app_categorie:
+    resource: "@AppBundle/Controller/CategorieController.php"
+    type:     annotation
+
+app_article:
+    resource: "@AppBundle/Controller/ArticleController.php"
+    type:     annotation
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

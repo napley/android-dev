@@ -1,0 +1,235 @@
+//colors
+$black_20: rgba(0, 0, 0, 0.2);
+$color_bon_jour_approx: #e0e0e0;
+$black_25: rgba(0, 0, 0, 0.25);
+$black_30: rgba(0, 0, 0, 0.3);
+$black_10: rgba(0, 0, 0, 0.1);
+$white: white;
+$black: black;
+$black_80: rgba(0, 0, 0, 0.8);
+$black_16: rgba(0, 0, 0, 0.16);
+$gray: #808080;
+$white_10: rgba(255, 255, 255, 0.1);
+
+//fonts
+$font_0: Arial;
+$font_1: sans-serif;
+
+//@extend-elements
+//original selectors
+//.rickshaw_graph .y_ticks .tick, .rickshaw_graph .x_ticks_d3 .tick
+%extend_1 {
+	stroke: $black_16;
+	stroke-width: 2px;
+	shape-rendering: crisp-edges;
+	pointer-events: none;
+}
+
+//original selectors
+//.rickshaw_graph .y_grid .tick, .rickshaw_graph .x_grid_d3 .tick
+%extend_2 {
+	z-index: -1;
+	stroke: $black_20;
+	stroke-width: 1px;
+	stroke-dasharray: 1 1;
+}
+
+//original selectors
+//.rickshaw_graph .y_ticks text, .rickshaw_graph .x_ticks_d3 text
+%extend_3 {
+	opacity: 0.5;
+	font-size: 12px;
+	pointer-events: none;
+}
+
+//original selectors
+//.rickshaw_graph .x_tick.glow .title, .rickshaw_graph .y_ticks.glow text
+%extend_4 {
+	fill: $black;
+	color: $black;
+	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	text-shadow: -1px 1px 0 $white_10, 1px -1px 0 $white_10, 1px 1px 0 $white_10, 0 1px 0 $white_10, 0 -1px 0 $white_10, 1px 0 0 $white_10, -1px 0 0 $white_10, -1px -1px 0 $white_10;
+}
+
+//original selectors
+//.rickshaw_graph .x_tick.inverse .title, .rickshaw_graph .y_ticks.inverse text
+%extend_5 {
+	fill: $white;
+	color: $white;
+	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	text-shadow: -1px 1px 0 $black_80, 1px -1px 0 $black_80, 1px 1px 0 $black_80, 0 1px 0 $black_80, 0 -1px 0 $black_80, 1px 0 0 $black_80, -1px 0 0 $black_80, -1px -1px 0 $black_80;
+}
+
+
+.rickshaw_graph {
+	position: relative;
+	svg {
+		display: block;
+		overflow: hidden;
+	}
+	.x_tick {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 0;
+		border-left: 1px dotted $black_20;
+		pointer-events: none;
+		.title {
+			position: absolute;
+			font-size: 12px;
+			font-family: $font_0, $font_1;
+			opacity: 0.5;
+			white-space: nowrap;
+			margin-left: 3px;
+			bottom: 1px;
+		}
+		&.glow .title {
+			@extend %extend_4;
+		}
+		&.inverse .title {
+			@extend %extend_5;
+		}
+	}
+	.annotation_line {
+		position: absolute;
+		top: 0;
+		bottom: -6px;
+		width: 0;
+		border-left: 2px solid $black_30;
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	.annotation_range {
+		background: $black_10;
+		display: none;
+		position: absolute;
+		top: 0;
+		bottom: -6px;
+		&.active {
+			display: block;
+			&.offscreen {
+				display: none;
+			}
+		}
+	}
+	.y_axis {
+		fill: none;
+	}
+	.x_axis_d3 {
+		fill: none;
+	}
+	.y_ticks {
+		.tick {
+			@extend %extend_1;
+		}
+		path {
+			fill: none;
+			stroke: $gray;
+		}
+		text {
+			@extend %extend_3;
+		}
+		&.glow text {
+			@extend %extend_4;
+		}
+		&.inverse text {
+			@extend %extend_5;
+		}
+	}
+	.x_ticks_d3 {
+		.tick {
+			@extend %extend_1;
+		}
+		path {
+			fill: none;
+			stroke: $gray;
+		}
+		text {
+			@extend %extend_3;
+		}
+	}
+	.y_grid {
+		.tick {
+			@extend %extend_2;
+		}
+		.tick[data-y-value="0"] {
+			stroke-dasharray: 1 0;
+		}
+		path {
+			fill: none;
+			stroke: none;
+		}
+	}
+	.x_grid_d3 {
+		.tick {
+			@extend %extend_2;
+		}
+		path {
+			fill: none;
+			stroke: none;
+		}
+	}
+}
+.rickshaw_annotation_timeline {
+	height: 1px;
+	border-top: 1px solid $color_bon_jour_approx;
+	margin-top: 10px;
+	position: relative;
+	.annotation {
+		position: absolute;
+		height: 6px;
+		width: 6px;
+		margin-left: -2px;
+		top: -3px;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		background-color: $black_25;
+		.content {
+			background: $white;
+			color: $black;
+			opacity: 0.9;
+			padding: 5px;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: 0 0 2px $black_80;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 3px;
+			position: relative;
+			z-index: 20;
+			font-size: 12px;
+			padding: 6px 8px 8px;
+			top: 18px;
+			left: -11px;
+			width: 160px;
+			display: none;
+			cursor: pointer;
+			&:before {
+				content: "\25b2";
+				position: absolute;
+				top: -11px;
+				color: $white;
+				//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+				text-shadow: 0 -1px 1px $black_80;
+			}
+			&:hover {
+				z-index: 50;
+			}
+		}
+		&.active {
+			background-color: $black_80;
+			cursor: none;
+			.content {
+				display: block;
+			}
+		}
+		&:hover {
+			background-color: $black_80;
+			cursor: none;
+			.content {
+				display: block;
+				z-index: 50;
+			}
+		}
+	}
+}

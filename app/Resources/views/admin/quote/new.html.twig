@@ -1,0 +1,18 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Création d'une nouvelle quote - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Création d'une nouvelle quote</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_quote_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

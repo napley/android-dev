@@ -1,0 +1,28 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Création d'un article - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Création d'un article</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div>
+            <fieldset>
+                <legend>Mot Clé</legend>
+                <label class="labelClick" onclick="addMotCle();" >Ajouter</label>
+                <div class="clear"></div>
+                <ul id="listeMotCle" data-url="{{ url('admin_mot_cle_list') }}">
+
+                </ul>
+            </fieldset>
+        </div>
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_article_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

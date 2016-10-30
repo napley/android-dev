@@ -1,0 +1,17 @@
+<div class="" id="nav-wrap">
+    <div class="container">
+        <div id="menuzord" class="menuzord red pull-left menuzord-responsive"><a style="display: none;" href="javascript:void(0)" class="showhide"></a>
+            <span class="menuzord-brand">
+                ANDROID-DEV.FR
+            </span>
+            {% if current is defined %}
+                {% set menuItem = knp_menu_get('AppBundle:Builder:mainMenu', [], {'current' : current}) %}
+            {% else %}
+                {% set menuItem = knp_menu_get('AppBundle:Builder:mainMenu', [], {'current' : ''}) %}
+            {% endif %}
+            {{ knp_menu_render(menuItem, {'currentClass': 'active'}) }}
+
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

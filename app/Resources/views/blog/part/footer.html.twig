@@ -1,0 +1,93 @@
+<div class="widget-footer">
+    <div class="container">
+        <div class="row">                	
+            <div class="col-sm-4">
+                <div class="footer-dark">
+                    <div class="text-footer">
+                        <div class="footer-logo">ANDROID-DEV.FR</div>
+                        <div>{{ infosite()['infosite']['footer'] | raw  }}</div>
+
+                        <div class="social-icons footer">
+                            <ul>
+                                <li><a target="_blank" data-original-title="Twitter" title="twitter" data-toggle="tooltip" href="https://twitter.com/androiddevfr"><i class="fa fa-twitter"></i></a></li>                
+                                <li><a target="_blank" data-original-title="Facebook" title="facebook" data-toggle="tooltip" href="https://www.facebook.com/androiddev.fr/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" data-original-title="Google Plus" title="google plus" data-toggle="tooltip" href="https://plus.google.com/+Android-devFr"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a target="_blank" data-original-title="RSS" title="flux rss" data-toggle="tooltip" href="{{ path('flux_rss') }}"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-6 col-sm-4">
+                        <div class="sidebar-head"><span>Contenu</span></div>
+                        <ul class="category">
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="{{ path('home_article') }}">Articles</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>({{ nbtotal('article') }})</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="{{ path('home_tuto') }}">Tutos</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>({{ nbtotal('tuto') }})</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cat-desc">
+                                    <div class="category-details">
+                                        <span><a href="{{ path('home_projet') }}">Projets</a></span>
+                                    </div>
+                                    <div class="dots"></div>
+                                    <div class="category-links">
+                                        <span>({{ nbtotal('projet') }})</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-4">
+                        <div class="sidebar-head"><span>Les + vus</span></div>
+                        <div class="">
+                            <ul class="sidebar-post">
+                                {% for article in toppiwik(2) %}
+                                <li>                                            
+                                    <div class="post-text">
+                                        <h4><a href="{{ path('article_voir', {'slug': article.slug}) }}">{{ article.titre | raw }}</a></h4>
+                                        {{ article.sousTitre | raw }}
+                                        <div class="post-date">
+                                            <i class="fa fa-clock-o"></i> {{ article.getPublishedAt()|date("d/m/Y") }}
+                                        </div>
+                                        <div class="post-date">
+                                            <a href="{{ path('article_voir', {'slug': article.slug}) }}"><i class="fa fa-comments-o"></i>
+                                            <span class="count disqus-comment-count" data-disqus-url="{{ path('article_voir', {'slug': article.slug}) }}">0</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-inner">
+    <div class="container text-center">
+        <p><a href="{{ path('homepage') }}">Accueil</a> | <a href="{{ path('home_article') }}">Articles</a> | <a href="{{ path('home_tuto') }}">Tutos</a> | <a href="{{ path('home_projet') }}">Projets</a> | <a href="{{ path('mentions') }}">Mentions légales</a> | <a href="{{ path('apropos') }}">à propos</a> | <a href="{{ path('contact') }}">Contact</a></p>
+        <div>© 2010 - {{ "now"|date("Y") }} | All Rights Reserved.</div>
+    </div>
+</div>

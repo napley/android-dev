@@ -1,0 +1,50 @@
+<div class="postbox-container col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    <div class="postbox">
+        <div class="item-thumbs">
+            <a href="{{ path('article_voir', { slug : article.getSlug() }) }}">
+                <img src="{{ article.vignette }}" alt="{{ article.titre | raw }}">
+            </a>
+        </div>
+        <div class="postbox-outer">
+            <div class="meta">
+                
+                {% if article.getType().id == 3 %}
+                    {% set link_cat = 'projet_voir' %}
+                    {% set slug_cat = article.projet.projet.slug %}
+                    {% set name_cat = article.projet.projet.titre %}
+                {% else %}
+                    {% set link_cat = article.type.slug ~ '_cat' %}
+                    {% set slug_cat = article.categorie.slug %}
+                    {% set name_cat = article.categorie.nom %}
+                {% endif %}
+                
+                <span><a href="{{ path(link_cat, {'slug': slug_cat}) }}"><i class="fa fa-tag"></i> {{ name_cat }}</a></span>
+                
+                <span class="date">{{ article.getPublishedAt()|date("d/m/Y") }}</span>
+                <span>
+                    <a href="{{ path('article_voir', { slug : article.getSlug() }) }}" data-toggle="tooltip" title="" data-original-title="12" class="comments-icon">
+                        <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span>
+                        <i class="fa fa-comments-o"></i>
+                    </a>
+                </span>
+            </div>
+            <h3 class="postbox-title"><a href="{{ path('article_voir', { slug : article.getSlug() }) }}">{{ article.titre | raw }}</a></h3>
+            <div class="desc-text">
+                {{ article.sousTitre | raw }}
+            </div>
+        </div>
+        <div class="postbox-bottom">
+            <div class="social-icons pull-left">
+                <!--<ul>
+                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                
+                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                </ul>-->
+                <div class="addthis_sharing_toolbox" data-url="{{ path('article_voir', { slug : article.getSlug() }) }}" data-title="{{ article.titre | raw }}"></div>
+            </div>
+            <div class="pull-right"><a href="{{ path('article_voir', { slug : article.getSlug() }) }}" class="more-links">Lire la suite</a></div>
+            <div class="clearfix"></div>
+        </div>                        
+    </div>
+</div>

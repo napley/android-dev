@@ -1,0 +1,113 @@
+
+$black_10: rgba(0, 0, 0, 0.1);
+$color_bon_jour_approx: #e0e0e0;
+$white: white;
+$black_40: rgba(0, 0, 0, 0.4);
+$black_80: rgba(0, 0, 0, 0.8);
+$black_60: rgba(0, 0, 0, 0.6);
+
+//fonts
+$font_0: Arial;
+$font_1: sans-serif;
+
+.rickshaw_graph .detail {
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	background: $black_10;
+	bottom: 0;
+	width: 1px;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: opacity 0.25s linear;
+	&.inactive {
+		opacity: 0;
+	}
+	.item {
+		position: absolute;
+		z-index: 2;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 3px;
+		padding: 0.25em;
+		font-size: 12px;
+		font-family: $font_0, $font_1;
+		opacity: 0;
+		background: $black_40;
+		color: $white;
+		border: 1px solid $black_40;
+		margin-left: 1em;
+		margin-right: 1em;
+		margin-top: -1em;
+		white-space: nowrap;
+		&.active {
+			opacity: 1;
+			background: $black_80;
+		}
+		&.left {
+			left: 0;
+			&:after {
+				top: 1em;
+				left: -5px;
+				margin-top: -5px;
+				border-right-color: $black_80;
+				border-left-width: 0;
+			}
+		}
+		&.right {
+			right: 0;
+			&:after {
+				top: 1em;
+				right: -5px;
+				margin-top: -5px;
+				border-left-color: $black_80;
+				border-right-width: 0;
+			}
+		}
+		&:after {
+			position: absolute;
+			display: block;
+			width: 0;
+			height: 0;
+			content: "";
+			border: 5px solid transparent;
+		}
+	}
+	.x_label {
+		font-family: $font_0, $font_1;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 3px;
+		padding: 6px;
+		opacity: 0.5;
+		border: 1px solid $color_bon_jour_approx;
+		font-size: 12px;
+		position: absolute;
+		background: $white;
+		white-space: nowrap;
+		&.left {
+			left: 0;
+		}
+		&.right {
+			right: 0;
+		}
+	}
+	.dot {
+		width: 4px;
+		height: 4px;
+		margin-left: -2px;
+		margin-top: -2px;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		position: absolute;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: 0 0 2px $black_60;
+		background: $white;
+		border-width: 2px;
+		border-style: solid;
+		display: none;
+		//Instead of the line below you could use @include background-clip($clip)
+		background-clip: padding-box;
+		&.active {
+			display: block;
+		}
+	}
+}

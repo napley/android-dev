@@ -1,0 +1,22 @@
+<div class="" id="nav-wrap">
+    <div class="container">
+        <div id="menuzord" class="menuzord red pull-left menuzord-responsive"><a style="display: none;" href="javascript:void(0)" class="showhide"></a>
+            <span class="menuzord-brand">
+                ANDROID-DEV.FR
+            </span>
+            <ul class="menuzord-menu">
+                <li><a href="{{ path('admin_homepage') }}">Accueil Administration</a></li>
+                
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}<br />
+                            <span class="subtitle-menu">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

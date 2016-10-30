@@ -1,0 +1,20 @@
+<div class="widgets-box superposed affix">
+    <div class="sidebar-head"><span>Aller à</span></div>
+    <div class="sidebar-text" id="sommaire">
+        <ul class="nav">
+        </ul>
+        {% if article is defined and article.getType().id == 3 %}
+            <hr />
+            <ul>
+                {% if article.getPrevArticle != null %}
+                    <li><a href="{{ path('article_voir', {'slug': article.getPrevArticle().getSlug() }) }}"><i class="fa fa-step-backward" aria-hidden="true"></i> {{ article.getPrevArticle().getProjet().getRang() }} - {{ article.getPrevArticle().getTitre() }}</a></li>
+                {% endif %}
+                {% if article.getNextArticle != null %}
+                    <li><a href="{{ path('article_voir', {'slug': article.getNextArticle().getSlug() }) }}"><i class="fa fa-step-forward" aria-hidden="true"></i> {{ article.getNextArticle().getProjet().getRang() }} - {{ article.getNextArticle().getTitre() }}</a></li>
+                {% endif %}
+                <li><a href="{{ path('projet_voir', {'slug': article.getProjet().getProjet().slug}) }}"><i class="fa fa-eject" aria-hidden="true"></i> Retour au projet</a></li>
+            </ul>
+        {% endif %}
+
+    </div>
+</div>

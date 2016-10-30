@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Gestion des mot clés - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Gestion des mot clés</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_motcle_new') }}">Create a new motCle</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motCle in motCles %}
+            <tr>
+                <td><a href="{{ path('admin_motcle_show', { 'id': motCle.id }) }}">{{ motCle.id }}</a></td>
+                <td>{{ motCle.nom }}</td>
+                <td>{{ motCle.slug }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_motcle_show', { 'id': motCle.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_motcle_edit', { 'id': motCle.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

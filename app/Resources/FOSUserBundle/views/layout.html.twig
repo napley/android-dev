@@ -1,0 +1,38 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Android-dev.fr - Connexion à l'administration{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block urlCanonical %}{% endblock %}
+
+{% block meta %}
+    <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block body %}
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <div id="form-user">
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+    
+{% endblock %}
+
+{% block colLeft %}
+                        
+{% endblock %}
+
+{% block colRight %}
+                        
+{% endblock %}

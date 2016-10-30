@@ -1,0 +1,165 @@
+{% extends 'blog.html.twig' %}
+
+{% block title %}{{ article.titre | raw }} | Android-dev.fr{% endblock %}
+
+{% block description %}{{ article.titre | raw }}. {{ article.sousTitre | striptags  }}{% endblock %}
+
+{% block urlCanonical %}http://www.android-dev.fr{{ path('article_voir', {'slug': article.slug}) }}{% endblock %}
+
+{% block meta %}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "name": "{{ article.titre | raw }}",
+        "dateModified" : "{{ article.getUpdated()|date("d/m/Y H:i:s") }}",
+        "datePublished" : "{{ article.getPublishedAt()|date("d/m/Y H:i:s") }}",
+        "headline" : "{{ article.titre | raw }}",
+        "articleBody" : "{{ article.contenu }}",
+        "headline" : "{{ article.titre | raw }}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Android-dev.fr",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://example.com/logo.jpg",
+                "width": 600,
+                "height": 60
+            }
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://www.android-dev.fr{{ article.vignette }}",
+            "height": 300,
+            "width": 400
+        },
+        "description": "{{ article.sousTitre | raw }}",
+        "author": {
+            "@type": "Person",
+            "name": "Androiddev"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http://www.android-dev.fr{{ path('article_voir', {'slug': article.slug}) }}"
+        }
+    }
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="articlebox">
+
+        <div class="articlebox-thumbs">
+            <img src="{{ article.vignette }}" alt="{{ article.titre | raw }}">
+        </div>
+        <div class="articlebox-outer">
+            <div class="meta">
+                
+                {% if article.getType().id == 3 %}
+                    {% set link_cat = 'projet_voir' %}
+                    {% set slug_cat = article.projet.projet.slug %}
+                    {% set name_cat = article.projet.projet.titre %}
+                {% else %}
+                    {% set link_cat = article.type.slug ~ '_cat' %}
+                    {% set slug_cat = article.categorie.slug %}
+                    {% set name_cat = article.categorie.nom %}
+                {% endif %}
+                
+                <span><a href="{{ path(link_cat, {'slug': slug_cat}) }}"><i class="fa fa-tag"></i> {{ name_cat }}</a></span>
+                
+                <span class="date">{{ article.getPublishedAt()|date("d/m/Y") }}</span>
+                <span>
+                    <a class="comments-icon" data-original-title="12" title="" data-toggle="tooltip" href="#disqus_thread">
+                        <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span>
+                        <i class="fa fa-comments-o"></i>
+                    </a>
+                </span>
+            </div>
+            <h1 class="articlebox-title">{{ article.titre | raw }}</h1>
+        </div>
+        <div class="articlebox-text">
+            {{ article.contenu | raw }}
+        </div>
+        <div class="share-post text-center">
+            <h4>Partage</h4>
+            <div class="social-icons">
+                <div class="addthis_sharing_toolbox"></div>
+            </div>
+            <div class="articlebox-tag">	
+                <h5>Mots clés</h5>
+                {% for motCle in article.getMotCles() %}
+                    <a title="{{ motCle.getNom() }}" href="{{ path('motcle', {'slug': motCle.slug}) }}"><span class="mot-slider ">{{ motCle.getNom() }}</span></a>
+                {% endfor %}
+            </div>
+            <div class="clearfix"></div>
+        </div>                        
+
+    </div>
+
+    <div class="widgetbox">
+        <div class="sidebar-head">
+            <span>Ceci pourrait vous intéresser</span>
+        </div>
+        <div class="sidebar-text">
+            <div class="owl-carousel" id="relatedbox">
+                
+                {% for article in links %}
+                    <div>
+                        <a href="{{ path('article_voir', {'slug': article.slug}) }}"><img alt="{{ article.titre | raw }}" src="{{ article.vignette }}"></a>
+                        <div class="recent-post-text">
+                            <h4><a href="{{ path('article_voir', {'slug': article.slug}) }}">{{ article.titre | raw }}</a></h4>
+                            <div class="post-date">
+                                <i class="fa fa-clock-o"></i> {{ article.getPublishedAt()|date("d/m/Y") }}
+                            </div>
+                            <div class="post-date">
+                                <a href="{{ path('article_voir', {'slug': article.slug}) }}">
+                                    <i class="fa fa-comments-o"></i>
+                                    <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="widgetbox">
+        <div class="sidebar-head">
+            <span>Commentaires</span>
+        </div>
+        <div class="sidebar-text">
+            <div id="disqus_thread"></div>
+            <script>
+            var disqus_config = function () {
+            this.page.url = 'http://www.android-dev.fr/{{ article.slug  }}';
+            this.page.identifier = "{{ article.id }}";
+            this.page.title = "{{ article.titre | raw }}";
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//androiddev.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block colLeft %}
+    {% include 'blog/part/colLeft-voir.html.twig' %}
+                        
+{% endblock %}
+
+
+{% block colRight %}
+    {% include 'blog/part/colRight-home.html.twig' %}
+                        
+{% endblock %}

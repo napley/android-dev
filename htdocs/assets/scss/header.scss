@@ -1,0 +1,339 @@
+.top-bar {
+  padding: 8px 0;
+  background: $gray-darker;
+  color: $white;
+  font-size: 13px;
+  .social-icons {
+    float: right;
+    ul li {
+      line-height: inherit;
+    }
+  }
+}
+
+.box-search {
+  position: absolute;
+  top: -30px;
+}
+
+.search-input {
+  &.expanded {
+    display: block;
+    max-width: 200px;
+    opacity: 1;
+    position: absolute;
+  }
+  display: none;
+  width: 200px;
+  max-width: 0;
+  padding: 5px;
+  transition: all .5s ease;
+  position: absolute;
+  right: 8px;
+  top: 23px;
+  font-family: $font-family-2;
+  box-sizing: border-box;
+  opacity: 0;
+  font-size: 13px;
+  line-height: 20px;
+  border-radius: 0;
+  border: 2px solid #d1d1d1;
+  background: $white;
+  color: $black;
+}
+
+#nav-wrap, .menuzord.red {
+  background: $prim-color-alt;
+}
+
+.menuzord-menu {
+  > li > .megamenu {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+  }
+  ul.dropdown {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    li ul.dropdown {
+      box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+#back-top a:hover, #nav-wrap, .menuzord.red, .breadcrumb small::after, .social-icons.footer ul li a:hover, #contact_form .form-btn {
+  background-color: $prim-color;
+}
+
+.owl-nav {
+  .owl-prev:hover, .owl-next:hover {
+    background-color: $prim-color;
+  }
+}
+
+#body-content .cbp-l-loadMore-button {
+  .cbp-l-loadMore-link:hover, .cbp-l-loadMore-button-link:hover {
+    background-color: $prim-color;
+  }
+}
+
+.share-post h4, .post-tag a:hover, .sinlepost-navigation a:hover i, .dropcap, .dropcap2, .btn-round, .theme-accordian .panel-default > .panel-heading, .theme-tab .nav > li > a:hover, .trending {
+  background-color: $prim-color;
+}
+
+.owl-controls {
+  .owl-dot.active span, &.clickable .owl-dot:hover span, .owl-dot:hover span {
+    background-color: $prim-color;
+  }
+}
+
+/* Text Theme Color */
+
+a:hover, h1, h3 {
+  color: $prim-color;
+}
+
+.menuzord.red .menuzord-menu {
+  > li {
+    &.active > a, &:hover > a {
+      color: $prim-color;
+    }
+  }
+  ul.dropdown li:hover > a {
+    color: $prim-color;
+  }
+}
+
+.breadcrumb h1, .social-icons ul li a:hover, .sidebar-head, .like-icons:hover, .comments-icon:hover, .more-links, .link-post a:hover, .blog-title a:hover {
+  color: $prim-color;
+}
+
+.masonary-wrap .cbp-l-loadMore-button {
+  .cbp-l-loadMore-link, .cbp-l-loadMore-button-link {
+    color: $prim-color;
+  }
+}
+
+.sinlepost-navigation a:hover h4, .list-colored li i, .btn-border-round:hover {
+  color: $prim-color;
+}
+
+.theme-tab .nav-tabs > li.active > a {
+  color: $prim-color;
+  &:hover, &:focus {
+    color: $prim-color;
+  }
+}
+
+.jumbotron h1, #main-slider-boxed .blog-post .blog-outer a:hover, #sidebar-post .blog-post .blog-outer a:hover {
+  color: $prim-color;
+}
+
+/* Background Theme Color */
+
+#back-top a:hover, #nav-wrap, .menuzord.red, .breadcrumb small::after, .social-icons.footer ul li a:hover, #contact_form .form-btn {
+  background-color: $prim-color;
+}
+
+.owl-nav {
+  .owl-prev:hover, .owl-next:hover {
+    background-color: $prim-color;
+  }
+}
+
+#body-content .cbp-l-loadMore-button {
+  .cbp-l-loadMore-link:hover, .cbp-l-loadMore-button-link:hover {
+    background-color: $prim-color;
+  }
+}
+
+.share-post h4, .post-tag a:hover, .sinlepost-navigation a:hover i, .dropcap, .dropcap2, .btn-round, .theme-accordian .panel-default > .panel-heading, .theme-tab .nav > li > a:hover, .trending {
+  background-color: $prim-color;
+}
+
+.owl-controls {
+  .owl-dot.active span, &.clickable .owl-dot:hover span, .owl-dot:hover span {
+    background-color: $prim-color;
+  }
+}
+
+/* Border Theme Color */
+
+.meta span {
+  border-color: $prim-color;
+}
+
+.owl-nav {
+  .owl-prev:hover, .owl-next:hover {
+    border-color: $prim-color;
+  }
+}
+
+.sinlepost-navigation a:hover i, .btn-border-round:hover, .theme-tab .nav > li > a:hover {
+  border-color: $prim-color;
+}
+
+.menuzord {
+  font-family: $font-family-2;
+  padding: 0;
+}
+
+.menuzord-menu {
+  margin-top: -6px;
+  h3, h4 {
+    font-family: $font-family-2;
+  }
+  > li > a {
+    font-family: $font-family-2;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 40px 15px 40px 15px !important;
+    color: $white;
+  }
+}
+
+.menuzord.red .menuzord-menu {
+  > li {
+    &.active > a, &:hover > a {
+      background: $white;
+    }
+  }
+  ul.dropdown li {
+    &:hover > a {
+      background: $white;
+    }
+    a {
+      font-size: 14px;
+      &:hover {
+        color: $prim-color;
+      }
+    }
+  }
+}
+
+.menuzord-menu {
+  > li > .megamenu {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+  }
+  ul.dropdown {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    li ul.dropdown {
+      box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.menuzord-brand {
+  color: $white;
+}
+
+a:hover, h1, h3 {
+  color: $prim-color;
+}
+
+.menuzord.red .menuzord-menu {
+  > li {
+    &.active > a, &:hover > a {
+      color: $prim-color;
+    }
+  }
+  ul.dropdown li:hover > a {
+    color: $prim-color;
+  }
+}
+
+.breadcrumb h1, .social-icons ul li a:hover, .sidebar-head, .like-icons:hover, .comments-icon:hover, .more-links, .link-post a:hover, .blog-title a:hover {
+  color: $prim-color;
+}
+
+.masonary-wrap .cbp-l-loadMore-button {
+  .cbp-l-loadMore-link, .cbp-l-loadMore-button-link {
+    color: $prim-color;
+  }
+}
+
+.sinlepost-navigation a:hover h4, .list-colored li i, .btn-border-round:hover {
+  color: $prim-color;
+}
+
+.theme-tab .nav-tabs > li.active > a {
+  color: $prim-color;
+  &:hover, &:focus {
+    color: $prim-color;
+  }
+}
+
+.jumbotron h1, #main-slider-boxed .blog-post .blog-outer a:hover, #sidebar-post .blog-post .blog-outer a:hover, a:hover, h1, h3 {
+  color: $prim-color;
+}
+
+.menuzord.red .menuzord-menu {
+  > li {
+    &.active > a, &:hover > a {
+      color: $prim-color;
+    }
+  }
+  ul.dropdown li:hover > a {
+    color: $prim-color;
+  }
+}
+
+.breadcrumb h1, .social-icons ul li a:hover, .sidebar-head, .like-icons:hover, .comments-icon:hover, .more-links, .link-post a:hover, .blog-title a:hover {
+  color: $prim-color;
+}
+
+.masonary-wrap .cbp-l-loadMore-button {
+  .cbp-l-loadMore-link, .cbp-l-loadMore-button-link {
+    color: $prim-color;
+  }
+}
+
+.sinlepost-navigation a:hover h4, .list-colored li i, .btn-border-round:hover {
+  color: $prim-color;
+}
+
+.theme-tab .nav-tabs > li.active > a {
+  color: $prim-color;
+  &:hover, &:focus {
+    color: $prim-color;
+  }
+}
+
+.jumbotron h1, #main-slider-boxed .blog-post .blog-outer a:hover, #sidebar-post .blog-post .blog-outer a:hover {
+  color: $prim-color;
+}
+
+.menuzord {
+  &.red .showhide em {
+    background: #f0f0f0;
+  }
+  .showhide em {
+    width: 20px;
+    height: 3px;
+    margin: 3.5px 20px 0;
+    float: right;
+    background: #777;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuzord-responsive .menuzord-menu > li > a {
+    padding: 12px 20px !important;
+  }
+  .menuzord.red.menuzord-responsive .menuzord-menu > li > a {
+    border-color: $white;
+    .indicator {
+      border-color: $white;
+    }
+  }
+}

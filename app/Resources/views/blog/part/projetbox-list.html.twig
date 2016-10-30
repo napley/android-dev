@@ -1,0 +1,36 @@
+{% if loop.index == 1 %}
+    <!-- List post -->
+    <div class="col-sm-6">
+        <ul class="projetbox-liststep">
+        {% endif %}
+        {% if article.visible == true %}
+            <li>
+                <div class="projetbox-thumbnail">
+                    <a href="{{ path(link, link_param) }}">
+                        <img src="{{ article.vignette }}" class="projetbox-liststep-img " ></a>
+                </div>
+                <div class="projetbox-post-info">
+                    <h5 class="projetbox-post-title"><a href="{{ path(link, link_param) }}">
+                            {{ article.titre | raw }}</a></h5>
+
+
+                    {% for motCle in article.getMotCles() %}
+                    <a class="projetbox-liststep-cat" href="{{ path('motcle', {'slug': motCle.slug}) }}" rel="mot cle tag">
+                        <i class="fa fa-tag"></i> {{ motCle.getNom() }}
+                    </a>
+                    {% endfor %}
+
+                    <a class="projetbox-comment" href="{{ path(link, link_param) }}">
+                        <span class="count disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span> 
+                        <i class="fa fa-comments-o"></i>
+                    </a>
+
+                </div>
+                <div class="clear"></div>
+            </li>
+        {% endif %}
+
+        {% if loop.last %}
+        </ul>
+    </div>
+{% endif %}

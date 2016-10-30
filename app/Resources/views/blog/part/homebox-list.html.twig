@@ -1,0 +1,35 @@
+{% if loop.index == 2 %}
+    <!-- List post -->
+    <div class="col-sm-6">
+        <ul class="homebox-listpost">
+        {% endif %}
+        <li>
+            <div class="homebox-thumbnail">
+                <a href="{{ path(link, link_param) }}">
+                    <img src="{{ article.vignette }}" class="homebox-listpost-img " ></a>
+            </div>
+            <div class="homebox-post-info">
+                <h5 class="homebox-post-title"><a href="{{ path(link, link_param) }}">
+                        {{ article.titre | raw }}</a></h5>
+
+                {% if article.getCategorie() is defined %}
+                <a class="homebox-listpost-cat" href="{{ path(link_cat, {'slug': article.getCategorie().getSlug()}) }}" rel="category tag">
+                    <i class="fa fa-tag"></i> {{ article.getCategorie().getNom() }}
+                </a>
+                {% endif %}
+                <time class="homebox-date" datetime="{{ article.getPublishedAt()|date("Y-m-d") }}"><i>{{ article.getPublishedAt()|date("d/m/Y") }}</i></time>
+
+                <a class="homebox-comment" href="{{ path(link, link_param) }}">
+                    <span class="count disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span> <i class="fa fa-comments-o"></i></a>
+            </div>
+            <div class="clear"></div>
+        </li>
+
+        {% if loop.last %}
+        </ul>
+
+        <div class="blog-bottom">
+            <div class="pull-right"><a href="{{ path(link_more) }}" class="more-links"><i class="fa fa-plus"></i> {{ text_more }}</a></div>
+        </div>
+    </div>
+{% endif %}

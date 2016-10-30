@@ -1,0 +1,29 @@
+<div class="widgets-box">
+    <div class="sidebar-head bg-2">
+        <span>{{ title }}</span>
+    </div>
+    <div class="sidebar-text">
+        <ul class="sidebar-post">
+            {% for article in articles %}
+            <li>
+                <div class="image-thumb">
+                    <a href="{{ path('article_voir', {'slug': article.slug}) }}"><img src="{{ article.vignette }}" alt="{{ article.titre | raw }}"></a>
+                </div>
+                <div class="post-text">
+                    <h4><a href="{{ path('article_voir', {'slug': article.slug}) }}">{{ article.titre | raw }}</a></h4>
+                    <div class="small-text">{{ article.sousTitre | raw }}</div>
+                    <div class="post-date">
+                        <i class="fa fa-clock-o"></i> {{ article.getPublishedAt()|date("d/m/Y") }}
+                    </div>
+                    <div class="post-date">
+                        <a href="{{ path('article_voir', {'slug': article.slug}) }}">
+                            <i class="fa fa-comments-o"></i>
+                            <span class="count disqus-comment-count" data-disqus-url="{{ path('article_voir', {'slug': article.slug}) }}">0</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

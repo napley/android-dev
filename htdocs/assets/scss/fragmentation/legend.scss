@@ -1,0 +1,88 @@
+//colors
+$white: white;
+$color_cape_cod_approx: #404040;
+$black_20: rgba(0, 0, 0, 0.2);
+$white_8: rgba(255, 255, 255, 0.08);
+$white_20: rgba(255, 255, 255, 0.2);
+
+//fonts
+$font_0: Arial;
+
+.rickshaw_legend {
+	font-family: $font_0;
+	font-size: 12px;
+	color: $white;
+	background: $color_cape_cod_approx;
+	display: inline-block;
+	padding: 12px 5px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 2px;
+	position: relative;
+	&:hover {
+		z-index: 10;
+	}
+	.swatch {
+		width: 10px;
+		height: 10px;
+		border: 1px solid $black_20;
+	}
+	.line {
+		clear: both;
+		line-height: 140%;
+		padding-right: 15px;
+		.swatch {
+			display: inline-block;
+			margin-right: 3px;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 2px;
+		}
+		&.disabled {
+			opacity: 0.4;
+		}
+	}
+	.label {
+		margin: 0;
+		white-space: nowrap;
+		display: inline;
+		font-size: inherit;
+		background-color: transparent;
+		color: inherit;
+		font-weight: normal;
+		line-height: normal;
+		padding: 0;
+		//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		text-shadow: none;
+	}
+	.action {
+		margin-right: 0.2em;
+		font-size: 10px;
+		opacity: 0.2;
+		cursor: pointer;
+		font-size: 14px;
+		&:hover {
+			opacity: 0.6;
+		}
+	}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		margin: 2px;
+		cursor: pointer;
+	}
+	li {
+		padding: 0 0 0 2px;
+		min-width: 80px;
+		white-space: nowrap;
+		&:hover {
+			background: $white_8;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 3px;
+		}
+		&:active {
+			background: $white_20;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 3px;
+		}
+	}
+}
