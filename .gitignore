@@ -1,1 +1,4 @@
 android-dev.new.tar.gz
+access.log
+error.log
+app/config/parameters.yml
