@@ -17,4 +17,5 @@ app/config/parameters.yml
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
+/htdocs/bundles/
+/htdocs/upload
