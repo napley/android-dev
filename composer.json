@@ -1,5 +1,6 @@
 {
     "name": "fabien/android.dev.new",
+    "description": "Dépendance du site android-dev",
     "license": "proprietary",
     "type": "project",
     "autoload": {

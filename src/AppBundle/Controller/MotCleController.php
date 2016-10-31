@@ -143,9 +143,8 @@ class MotCleController extends Controller
      * @Route("/list", name="admin_mot_cle_list")
      * @Method({"GET", "POST"})
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
-        $request = Request::createFromGlobals();
         $param = $request->request->get('q');
         
         $em = $this->getDoctrine()->getManager();

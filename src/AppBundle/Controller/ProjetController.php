@@ -50,7 +50,6 @@ class ProjetController extends Controller
             $projet->setSlug($slug);
             $em->persist($projet);
             
-            $request = Request::createFromGlobals();
             $partProjects = $request->request->get('partProject');
 
             if (!empty($partProjects)) {
@@ -106,7 +105,6 @@ class ProjetController extends Controller
             $slug = $this->get('app.slugger')->slugify($projet->getTitre());
             $projet->setSlug($slug);
             
-            $request = Request::createFromGlobals();
             $partProjects = $request->request->get('partProject');
             
             foreach ($projet->getArticles() as $part) {

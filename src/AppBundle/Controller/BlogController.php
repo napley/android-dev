@@ -97,11 +97,11 @@ class BlogController extends Controller
         }
 
         return $this->render(
-                        'blog/contact.html.twig', [
+                'blog/contact.html.twig', [
                     'form' => $form->createView(),
                     'success' => $success,
                     'error' => $error
-                        ]
+                ]
         );
     }
 

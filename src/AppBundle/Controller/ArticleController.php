@@ -52,7 +52,6 @@ class ArticleController extends Controller
             $article->setSlug($slug);
             $em->persist($article);
             
-            $request = Request::createFromGlobals();
             $motsCles = $request->request->get('motCle');
 
             if (!empty($motsCles)) {
@@ -120,7 +119,6 @@ class ArticleController extends Controller
             $slug = $this->get('app.slugger')->slugify($article->getTitre());
             $article->setSlug($slug);
             
-            $request = Request::createFromGlobals();
             $motsCles = $request->request->get('motCle');
             
             foreach ($article->getMotCles() as $motCle) {
