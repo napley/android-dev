@@ -69,7 +69,6 @@ swiftmailer:
     password:  "%mailer_password%"
     encryption:  "%mailer_encryption%"
     port:      "%mailer_port%"
-    spool:     { type: memory }
     
 assetic:
     filters:
