@@ -114,6 +114,16 @@ class BlogController extends Controller
         return $this->render(
                         'blog/apropos.html.twig');
     }
+    
+    /**
+    * @Route("/a_propos", name="old_apropos")
+    * @Route("/a_propos/", name="old_apropos")
+    */
+    public function oldAProposAction()
+    {
+        return $this->redirect($this->generateUrl('apropos'), 301);
+    }
+
 
     /**
      * @Route("/fragmentation", name="fragmentation")
@@ -231,6 +241,7 @@ class BlogController extends Controller
 
     /**
      * @Route("/tuto", name="home_tuto", defaults={"page" = 1})
+     * @Route("/tuto/", name="home_tuto", defaults={"page" = 1})
      * @Route("/tuto/{page}", name="home_tuto_paginated", requirements={"page" : "\d+"})
      */
     public function indexTutoAction($page)
@@ -242,13 +253,22 @@ class BlogController extends Controller
         );
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate($query, $page, $infoSite['nbByPage']);
-        $articles->setUsedRoute('home_article_paginated');
+        $articles->setUsedRoute('home_tuto_paginated');
 
         return $this->render(
-                        'blog/tutos.html.twig', ['articles' => $articles,
+                'blog/tutos.html.twig', ['articles' => $articles,
                     'page' => $page,
                     'current' => 'Tutos'
         ]);
+    }
+    
+    /**
+     * @Route("/astuce", name="old_home_tuto", defaults={"page" = 1})
+     * @Route("/astuce/{page}", name="old_home_tuto_paginated", requirements={"page" : "\d+"})
+    */
+    public function indexOldTutoAction($page)
+    {
+        return $this->redirect($this->generateUrl('home_tuto_paginated', array('page' => $page)), 301);
     }
 
     /**
@@ -266,11 +286,21 @@ class BlogController extends Controller
         $articles->setUsedRoute('tuto_cat_paginated');
 
         return $this->render(
-                        'blog/tutos.html.twig', ['articles' => $articles,
+                'blog/tutos.html.twig', ['articles' => $articles,
                     'page' => $page,
                     'current' => 'Tutos',
                     'categorie' => $categorie
         ]);
+    }
+    
+    /**
+     * @Route("/astuce/{slug}", name="old_tuto_cat", defaults={"page" = 1})
+     * @Route("/astuce/{slug}/{page}", name="old_tuto_cat_paginated", requirements={"slug" : "[a-zA-Z0-9_-]+", "page" : "\d+"})
+     * @ParamConverter("categorie", class="AppBundle:Categorie", options={"slug" = "slug"})
+    */
+    public function indexOldTutoCatAction(Categorie $categorie, $page)
+    {
+        return $this->redirect($this->generateUrl('tuto_cat_paginated', array('slug' => $categorie->getSlug(), 'page' => $page)), 301);
     }
 
     /**
@@ -425,6 +455,21 @@ class BlogController extends Controller
         );
     }
     
+
+    /**
+     * @Route("/web/blog/voir/{id}", name="old_article_voir")
+     * @Route("/web/blog/voir/{id}?titre={titre}", name="old_article_voir")
+     * @ParamConverter("article", class="AppBundle:Article", options={"id" = "id"})
+     */
+    public function redirectAction(Article $article)
+    {
+
+        if (empty($article)) {
+            return $this->redirect($this->generateUrl('androiddev_accueil'), 301);
+        }
+
+        return $this->redirect($this->generateUrl('article_voir', array('slug' => $article->getSlug())), 301);
+    }
 
     /**
      * @Route("/{slug}", name="article_voir")
