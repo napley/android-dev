@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Point")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PointRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Point
 {
