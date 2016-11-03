@@ -154,6 +154,16 @@ class Android
         return $this->updated;
     }
 
+    function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+    }
+
 
     /**
      * Gets triggered only on insert
