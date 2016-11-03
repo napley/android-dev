@@ -19,3 +19,5 @@ app/config/parameters.yml
 /vendor/
 /htdocs/bundles/
 /htdocs/upload
+/htdocs/css
+/htdocs/js
