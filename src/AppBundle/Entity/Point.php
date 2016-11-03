@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Point")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PointRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Point
 {
@@ -130,6 +131,16 @@ class Point
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
     }
     
 

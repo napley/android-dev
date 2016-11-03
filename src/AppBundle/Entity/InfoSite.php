@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="InfoSite")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\InfoSiteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class InfoSite
 {
@@ -317,6 +318,15 @@ class InfoSite
         $this->nbByPageHome = $nbByPageHome;
     }
 
+    function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+    }
         
     /**
      * Gets triggered only on insert
