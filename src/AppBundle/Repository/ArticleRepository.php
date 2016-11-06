@@ -6,15 +6,28 @@ use Doctrine\ORM\EntityRepository;
 
 class ArticleRepository extends EntityRepository
 {
-    public function findLatest()
-    {
-        return $this->getEntityManager()
+    public function getLatest($type = null)
+    {        
+        if ($type == null) {
+            return $this->getEntityManager()
             ->createQuery(
                 'SELECT a FROM AppBundle:Article a '
                     . ' WHERE a.visible = 1 AND (a.publishedAt IS NULL OR a.publishedAt< CURRENT_TIMESTAMP()) '
                     . 'ORDER BY a.created DESC'
             )
             ->getResult();
+        } else {
+        
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM AppBundle:Article a '
+                    . ' JOIN a.Type t'
+                    . ' WHERE a.visible = 1 AND t.id = :type_id AND (a.publishedAt IS NULL OR a.publishedAt< CURRENT_TIMESTAMP()) '
+                    . 'ORDER BY a.created DESC'
+            )
+            ->setParameter('type_id', $type)
+            ->getResult();
+        }
     }
     
     public function findTotal($type)

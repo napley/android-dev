@@ -25,16 +25,12 @@ class BlogController extends Controller
     {
         $infoSite = $this->container->get('app.infosite')->getInfoSite();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => '1'), array('created' => 'DESC')
-        );
+        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest(1);
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate($query, $page, $infoSite['nbByPageHome']);
         $articles->setUsedRoute('blog_index_paginated');
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => '2'), array('created' => 'DESC')
-        );
+        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest(2);
         $paginator = $this->get('knp_paginator');
         $tutos = $paginator->paginate($query, $page, $infoSite['nbByPageHome']);
         $tutos->setUsedRoute('blog_index_paginated');
@@ -203,9 +199,7 @@ class BlogController extends Controller
     {
         $infoSite = $this->container->get('app.infosite')->getInfoSite();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => '1'), array('created' => 'DESC')
-        );
+        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest(1);
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate($query, $page, $infoSite['nbByPage']);
         $articles->setUsedRoute('home_article_paginated');
@@ -248,9 +242,7 @@ class BlogController extends Controller
     {
         $infoSite = $this->container->get('app.infosite')->getInfoSite();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => '2'), array('created' => 'DESC')
-        );
+        $query = $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest(2);
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate($query, $page, $infoSite['nbByPage']);
         $articles->setUsedRoute('home_tuto_paginated');
@@ -396,9 +388,7 @@ class BlogController extends Controller
     public function feedAction()
     {
 
-        $articles = $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => array('1', '2')), array('created' => 'DESC')
-        );
+        $articles = $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest();
 
         $feed = $this->get('eko_feed.feed.manager')->get('article');
         $feed->addFromArray($articles);
@@ -433,8 +423,7 @@ class BlogController extends Controller
 //        $urls[] = ['loc' => $this->get('router')->generate('home_product_overview', ['_locale' => 'en')), 'changefreq' => 'weekly', 'priority' => '0.7'];
         // service
         
-        foreach ( $this->getDoctrine()->getRepository('AppBundle:Article')->findBy(
-                array('Type' => array('1', '2')), array('created' => 'DESC')) as $article) {
+        foreach ( $this->getDoctrine()->getRepository('AppBundle:Article')->getLatest() as $article) {
             $urls[] = ['loc' => $this->generateUrl('article_voir', 
                     ['slug' => $article->getSlug()]), 'priority' => '0.5'];
         }
