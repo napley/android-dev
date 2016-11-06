@@ -7,7 +7,7 @@
 {% block urlCanonical %}{% endblock %}
 
 {% block nextstylesheets %}
-    {% stylesheets filter='cssrewrite' output='css/app_admin.css'
+    {% stylesheets filter='scssphp' output='css/app_admin.css'
         "assets/css/jquery-ui/jquery-ui.css"
         "assets/css/jquery-ui/jquery-ui.structure.css"
         "assets/css/jquery-ui/jquery-ui.theme.css"
@@ -45,12 +45,11 @@
     </footer>
 {% endblock %}
 
-{% block nextJs %}
-    
-    {% javascripts filter="?jsqueeze" output="js/app_admin.js"
+{% block nextJs %}    
+    {% javascripts filter="" output="js/admin_dep.js"
             "assets/js/jquery-ui.js"
-            "assets/js/main_admin.js"
             "assets/js/dataTables.js"
+            "assets/js/main_admin.js"
     %}
     
     <script src="{{ asset_url }}"></script>
