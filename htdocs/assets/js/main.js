@@ -63,6 +63,8 @@ $(document).ready(function () {
     $('.icon').click(function () {
         $('.search-input').toggleClass('expanded');
     });
+    
+    $('.articlebox-text table').addClass('table table-striped');
 
     // init Masonry
     var $grid = $('.grid').masonry({

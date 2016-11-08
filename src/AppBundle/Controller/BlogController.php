@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Categorie;
 use AppBundle\Entity\MotCle;
@@ -447,14 +448,34 @@ class BlogController extends Controller
 
     /**
      * @Route("/web/blog/voir/{id}", name="old_article_voir")
-     * @Route("/web/blog/voir/{id}?titre={titre}", name="old_article_voir")
+     * @Route("/web/blog/voir/{id}?titre={titre}", name="old_article_voir_titre")
      * @ParamConverter("article", class="AppBundle:Article", options={"id" = "id"})
      */
-    public function redirectAction(Article $article)
+    public function oldVoirAction(Article $article)
     {
+        
+        if (empty($article)) {
+            return $this->redirect($this->generateUrl('homepage'), 404);
+        }
+
+        return $this->redirect($this->generateUrl('article_voir', array('slug' => $article->getSlug())), 301);
+    }
+    
+
+    /**
+     * @Route("/detail.php", name="old_article_voir2")
+     * @Method("GET")
+     */
+    public function old2VoirAction(Request $request)
+    {
+        $idArticle = $request->query->get('billet');
+        
+        if (!empty($idArticle)) {
+            $article = $this->getDoctrine()->getRepository('AppBundle:Article')->find($idArticle);
+        }
 
         if (empty($article)) {
-            return $this->redirect($this->generateUrl('androiddev_accueil'), 301);
+            return $this->redirect($this->generateUrl('homepage'), 404);
         }
 
         return $this->redirect($this->generateUrl('article_voir', array('slug' => $article->getSlug())), 301);
