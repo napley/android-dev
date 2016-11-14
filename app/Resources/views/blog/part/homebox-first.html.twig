@@ -20,7 +20,7 @@
                 <time class="homebox-date" datetime="{{ article.getPublishedAt()|date("Y-m-d") }}"><i>{{ article.getPublishedAt()|date("d/m/Y") }}</i></time>
 
                 <a class="homebox-comment" href="{{ path(link, link_param) }}">
-                    <span class="count disqus-comment-count" data-disqus-url="{{ path(link, link_param) }}">0</span> <i class="fa fa-comments-o"></i></a>
+                    <span class="count disqus-comment-count" data-disqus-url="www.android-dev.fr{{ path(link, link_param) }}">0</span> <i class="fa fa-comments-o"></i></a>
             </div>
             {{ article.sousTitre | raw }}
 
