@@ -70,10 +70,10 @@
                 
                 <span class="date">{{ article.getPublishedAt()|date("d/m/Y") }}</span>
                 <span>
-                    <a class="comments-icon" data-original-title="12" title="" data-toggle="tooltip" href="#disqus_thread">
-                        <span class="disqus-comment-count" data-disqus-identifier="{{ article.id }}">0</span>
-                        <i class="fa fa-comments-o"></i>
+                    <a class="comments-icon disqus-comment-count" data-disqus-identifier="{{ article.id }}" data-toggle="tooltip" href="#disqus_thread">
+                        0
                     </a>
+                    <i class="fa fa-comments-o"></i>
                 </span>
             </div>
             <h1 class="articlebox-title">{{ article.titre | raw }}</h1>
@@ -134,7 +134,7 @@
             <div id="disqus_thread"></div>
             <script>
             var disqus_config = function () {
-            this.page.url = 'http://www.android-dev.fr/{{ article.slug  }}';
+            this.page.url = 'http://www.android-dev.fr/{{ article.slug }}';
             this.page.identifier = "{{ article.id }}";
             this.page.title = "{{ article.titre | raw }}";
             };

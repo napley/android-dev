@@ -61,10 +61,10 @@
                 <div class="meta">
                     <span class="date">{{ projet.getCreated()|date("d/m/Y") }}</span>
                     <span>
-                        <a class="comments-icon" data-original-title="12" title="" data-toggle="tooltip" href="#disqus_thread">
-                            <span class="disqus-comment-count" data-disqus-identifier="p{{ projet.id }}">0</span>
-                            <i class="fa fa-comments-o"></i>
+                        <a class="comments-icon disqus-comment-count" data-disqus-identifier="p{{ projet.id }}" data-toggle="tooltip" href="#disqus_thread">
+                            0
                         </a>
+                        <i class="fa fa-comments-o"></i>
                     </span>
                 </div>
                 <h1 class="articlebox-title">{{ projet.titre | raw }}</h1>
