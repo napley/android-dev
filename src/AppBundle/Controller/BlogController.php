@@ -48,6 +48,17 @@ class BlogController extends Controller
                     'page' => $page
         ]);
     }
+    
+    /**
+     * @Route("/web/blog", name="old_homepage", defaults={"page" = 1})
+     * @Route("/web/blog/", name="old_homepage_2", defaults={"page" = 1})
+     * @Route("/web/blog/{page}", name="old_blog_index_paginated", requirements={"page" : "\d+"})
+    */
+    public function indexOldAction($page)
+    {
+        return $this->redirect($this->generateUrl('homepage', array('page' => $page)), 301);
+    }
+
 
     /**
      * @Route("/mentions", name="mentions")
@@ -194,6 +205,7 @@ class BlogController extends Controller
 
     /**
      * @Route("/article", name="home_article", defaults={"page" = 1})
+     * @Route("/article/", name="home_article_2", defaults={"page" = 1})
      * @Route("/article/{page}", name="home_article_paginated", requirements={"page" : "\d+"})
      */
     public function indexArticleAction($page)
@@ -257,6 +269,8 @@ class BlogController extends Controller
     
     /**
      * @Route("/astuce", name="old_home_tuto", defaults={"page" = 1})
+     * @Route("/web/blog/tuto", name="old_home_tuto_2", defaults={"page" = 1})
+     * @Route("/web/blog/tuto/", name="old_home_tuto_3", defaults={"page" = 1})
      * @Route("/astuce/{page}", name="old_home_tuto_paginated", requirements={"page" : "\d+"})
     */
     public function indexOldTutoAction($page)
@@ -298,6 +312,7 @@ class BlogController extends Controller
 
     /**
      * @Route("/projet", name="home_projet", defaults={"page" = 1})
+     * @Route("/projet/", name="home_projet_2", defaults={"page" = 1})
      * @Route("/projet/{page}", name="home_projet_paginated", requirements={"page" : "\d+"})
      */
     public function indexProjetAction($page)

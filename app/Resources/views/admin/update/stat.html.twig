@@ -1,0 +1,26 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Mise à jour top - Android-dev.fr{% endblock %}
+
+{% block body %}
+    <h1>Mise à jour du top</h1>
+        
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Id</th>
+                <th>Article</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stat in stats %}
+            <tr>
+                <td>{{ stat.rank }}</td>
+                <td>{{ stat.article.id }}</td>
+                <td>{{ stat.article.titre }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

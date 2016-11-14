@@ -4,7 +4,7 @@
 
 {% block description %}Toutes les articles {% if motcle is defined %}{{ motcle.nom }}{% endif %} du site android-dev.fr {% if  page > 1 %}- Page {{ page }}.{% endif %}{% endblock %}
 
-{% block urlCanonical %}http://www.android-dev.fr/mot-cle/{% if motcle is defined %}{{ motcle.slug }}/{% endif %}{% if  page > 1 %}{{ page }}{% endif %}{% endblock %}
+{% block urlCanonical %}http://www.android-dev.fr/mot-cle/{% if motcle is defined %}{{ motcle.slug }}{% endif %}{% if  page > 1 %}/{{ page }}{% endif %}{% endblock %}
 
 {% block meta %}
 {% endblock %}
