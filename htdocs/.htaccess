@@ -5,6 +5,7 @@ SetEnv SESSION_AUTOSTART 0
 SetEnv SESSION_USE_TRANS_SID 0
 SetEnv ZEND_OPTIMIZER 1
 SetEnv MAGIC_QUOTES_GPC 0
+Options +FollowSymLinks
 
 # compress text, html, javascript, css, xml:
 AddOutputFilterByType DEFLATE text/plain
