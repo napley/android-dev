@@ -3,6 +3,11 @@
   border: 1px solid $gray-light;
   box-sizing: border-box;
   margin: 0;
+  
+  .social-icons div {
+      height: 25px;
+      width: 125px;
+  }
 }
 
 .item-thumbs {

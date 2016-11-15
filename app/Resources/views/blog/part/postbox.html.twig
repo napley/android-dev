@@ -35,12 +35,6 @@
         </div>
         <div class="postbox-bottom">
             <div class="social-icons pull-left">
-                <!--<ul>
-                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>                
-                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                    <li><a href="#" data-toggle="tooltip" title="" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                </ul>-->
                 <div class="addthis_sharing_toolbox" data-url="{{ path('article_voir', { slug : article.getSlug() }) }}" data-title="{{ article.titre | raw }}"></div>
             </div>
             <div class="pull-right"><a href="{{ path('article_voir', { slug : article.getSlug() }) }}" class="more-links">Lire la suite</a></div>
