@@ -2,6 +2,8 @@
  * Main admin JS
  */
 $(document).ready(function () {
+    CKEDITOR.dtd.$removeEmpty['span'] = false;
+    
     $("<input type='button' value='Effacer' onclick='emptyPrevInput(this)'/>").insertAfter("form input[data-type='elfinder-input-field']");
     
     $('.table').DataTable({

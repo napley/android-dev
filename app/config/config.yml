@@ -67,8 +67,6 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    encryption:  "%mailer_encryption%"
-    port:      "%mailer_port%"
     
 assetic:
     filters:
@@ -128,9 +126,25 @@ ivory_ck_editor:
         syntaxhighlight:
             path:     "/bundles/app/ckeditor/syntaxhighlight/"
             filename: "plugin.js"
+        widget:
+            path:     "/bundles/app/ckeditor/widget/"
+            filename: "plugin.js"
+        lineutils:
+            path:     "/bundles/app/ckeditor/lineutils/"
+            filename: "plugin.js"
+        glyphicons:
+            path:     "/bundles/app/ckeditor/glyphicons/"
+            filename: "plugin.js"
+        widgetselection:
+            path:     "/bundles/app/ckeditor/widgetselection/"
+            filename: "plugin.js"
+        colordialog:
+            path:     "/bundles/app/ckeditor/colordialog/"
+            filename: "plugin.js"
+
     configs:
         config_light:
-            extraPlugins:           wordcount,notification,autogrow,syntaxhighlight
+            extraPlugins:           widget,widgetselection,lineutils,colordialog,wordcount,notification,autogrow,syntaxhighlight,glyphicons
             #filebrowserUploadRoute: "my_route"
             autoGrow_onStartup:     "true"
             autoGrow_maxHeight:     "1000"
@@ -142,18 +156,42 @@ ivory_ck_editor:
             toolbar:                "toolbar_light"
             
         config_complete:
-            extraPlugins:           wordcount,notification,autogrow,syntaxhighlight
+            extraPlugins:           widget,widgetselection,lineutils,colordialog,wordcount,notification,autogrow,syntaxhighlight,glyphicons
             #filebrowserUploadRoute: "my_route"
             autoGrow_onStartup:     "true"
             autoGrow_maxHeight:     "1000"
             autoGrow_minHeight:     "100"
             language:               "fr"
             input_sync:             "true"
+            stylesSet:              bootstrap_styles
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: 
                 instance: ckeditor
                 homeFolder: ''
             toolbar:                "toolbar_complete"
+            contentsCss:            ['/css/app.css']
+            
+    styles:
+        bootstrap_styles:
+            - { name: "Alerte Success", element: "div",  attributes: { class: "alert alert-success", role: "alert" }}
+            - { name: "Alerte Info", element: "div",  attributes: { class: "alert alert-info", role: "alert" }}
+            - { name: "Alerte Warning", element: "div",  attributes: { class: "alert alert-warning", role: "alert" }}
+            - { name: "Alerte Danger", element: "div",  attributes: { class: "alert alert-danger", role: "alert" }}
+            - { name: "Badge", element: "span",  attributes: { class: "badge" }}
+            - { name: "Mark", element: "mark" }
+            - { name: "Deleted", element: "del" }
+            - { name: "Small", element: "small" }
+            - { name: "Keyboard", element: "kbd" }
+            - { name: "Blockquote", element: "blockquote" }
+            - { name: "Code", element: "code" }
+            - { name: "Text-muted", element: "p" ,  attributes: { class: "text-muted"}}
+            - { name: "Text-primary", element: "p" ,  attributes: { class: "text-primary"}}
+            - { name: "Text-success", element: "p" ,  attributes: { class: "text-success"}}
+            - { name: "Text-info", element: "p" ,  attributes: { class: "text-info"}}
+            - { name: "Text-warning", element: "p" ,  attributes: { class: "text-warning"}}
+            - { name: "Text-danger", element: "p" ,  attributes: { class: "text-danger"}}
+            - { name: "Clearfix", element: "div" ,  attributes: { class: "clearfix"}}
+            
 
     toolbars:
         configs:
@@ -167,7 +205,7 @@ ivory_ck_editor:
             list:        [ 'NumberedList','BulletedList','-','Outdent','Indent','-','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ]
             link:        [ 'Link','Unlink','Anchor' ]
             object:      [ 'pbckcode', 'Image', 'Video', 'HorizontalRule', 'Table', 'SpecialChar', 'Iframe' ]
-            style:       [ 'Styles', 'Format','Font','FontSize', 'TextColor', 'BGColor' ]
+            style:       [ 'Styles', 'Format','Font','FontSize', 'TextColor', 'BGColor', 'Glyphicons' ]
             syntax:      [ "Syntaxhighlight" ]
             tool:        [ "Maximize" ]
             
