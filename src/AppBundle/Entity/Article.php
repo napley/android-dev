@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Eko\FeedBundle\Item\Writer\ItemInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Table(name="Article")
@@ -65,6 +66,7 @@ class Article implements ItemInterface
     private $top = false;
 
     /**
+     * @Gedmo\Slug(fields={"titre"}, updatable=false)
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;

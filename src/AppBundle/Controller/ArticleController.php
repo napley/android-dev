@@ -48,8 +48,6 @@ class ArticleController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 //            $article->setAuteur($em->getRepository('AppBundle:User')->find(1));
-            $slug = $this->get('app.slugger')->slugify($article->getTitre());
-            $article->setSlug($slug);
             $em->persist($article);
             
             $motsCles = $request->request->get('motCle');
@@ -62,8 +60,6 @@ class ArticleController extends Controller
                     } else {
                         $motCle = new \AppBundle\Entity\MotCle();
                         $motCle->setNom($textMotCle);
-                        $slug = $this->get('app.slugger')->slugify($textMotCle);
-                        $motCle->setSlug($slug);
                         $article->addMotCle($motCle);
                         $em->persist($motCle);
                     }

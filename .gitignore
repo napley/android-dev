@@ -21,3 +21,6 @@ app/config/parameters.yml
 /htdocs/upload
 /htdocs/css
 /htdocs/js
+.idea/
+htdocs/assets/fonts/
+web/css/
